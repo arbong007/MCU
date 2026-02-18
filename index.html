@@ -1,0 +1,3147 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Praktikum Lengkap: Big Data Analytics</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* CSS Reset & A4 Layout */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #525659;
+            font-family: 'Source Sans 3', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .page {
+            background: white;
+            width: 205mm;
+            min-height: 292mm;
+            padding: 25mm;
+            margin: 20mm auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            page-break-after: always;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Source Sans 3', serif;
+            color: #1a202c;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 16pt;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            color: #2c5282;
+        }
+
+        h3 {
+            font-size: 13pt;
+            color: #2b6cb0;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 11pt;
+            font-weight: 600;
+            margin-top: 15px;
+            color: #c05621;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h5 {
+            font-size: 11pt;
+            font-weight: 600;
+            font-style: italic;
+            color: #4a5568;
+        }
+
+        p,
+        li {
+            font-size: 10.5pt;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: #1e1e1e;
+            color: #dcdcaa;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 9pt;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            margin-bottom: 15px;
+            border-left: 5px solid #48bb78;
+            page-break-inside: avoid;
+        }
+
+        /* Academic Boxes */
+        .theory-box {
+            background-color: #ebf8ff;
+            border: 1px solid #bee3f8;
+            border-left: 4px solid #2b6cb0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 10pt;
+        }
+
+        .theory-box strong {
+            color: #2b6cb0;
+        }
+
+        .task-box {
+            background-color: #fffaf0;
+            border: 1px solid #fbd38d;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box {
+            background-color: #f0fff4;
+            border: 1px solid #c6f6d5;
+            padding: 10px;
+            font-size: 10pt;
+            font-style: italic;
+            color: #2f855a;
+        }
+
+        /* TOC */
+        .toc a {
+            text-decoration: none;
+            color: #2b6cb0;
+            display: block;
+            margin-bottom: 5px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            font-size: 10pt;
+        }
+
+        th,
+        td {
+            border: 1px solid #cbd5e0;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #edf2f7;
+            color: #2d3748;
+        }
+
+        /* Print Button */
+        .btn-print {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background-color: #2c5282;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            z-index: 9999;
+        }
+
+        @media print {
+            body {
+                background: none;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                page-break-after: always;
+            }
+
+            .btn-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="btn-print" onclick="window.print()">🖨️ Cetak PDF</button>
+
+    <div class="page" style="text-align: center;">
+        <div
+            style="display: flex; justify-content: center; align-items: center; gap: 30px; padding-top: 60mm; margin-bottom: 40px;">
+            <img src="../Anti/Template/Anti 2026/logo/logo_itera.png" alt="ITERA"
+                style="width: 100px; height: 100px; object-fit: contain;">
+
+            <img src="../Anti/Template/Anti 2026/../../img/diktiberdampak.png" alt="Dikti"
+                style="width: 100px; height: 100px; object-fit: contain;">
+        </div>
+
+        <div style="font-size: 14pt; color: #718096; letter-spacing: 3px; margin-bottom: 20px; font-weight: bold;">
+            MODUL PRAKTIKUM LENGKAP
+        </div>
+
+        <h1 style="font-size: 36pt; color: #1a365d; margin: 0; line-height: 1.2;">
+            BIG DATA ANALYTICS & ENGINEERING
+        </h1>
+
+        <div style="width: 150px; height: 6px; background: #e53e3e; margin: 30px auto;"></div>
+
+        <div style="margin-top: 80px; font-size: 12pt; line-height: 1.6;">
+            <p style="margin: 5px 0;"><strong>Mata Kuliah:</strong> Big Data</p>
+            <p style="margin: 5px 0;"><strong>Edisi:</strong> Komprehensif (Modul 1 - 12)</p>
+            <p style="margin: 5px 0;"><strong>Tahun Akademik:</strong> 2025/2026</p>
+            <p style="margin: 5px 0;"><strong>Dosen Pengampu:</strong> Meida Cahyo Untoro</p>
+        </div>
+
+    </div>
+
+    <!-- DAFTAR ISI -->
+    <div class="page">
+        <h2>Daftar Isi</h2>
+        <div class="toc">
+            <a href="#modul1_part1">Modul 1: Pengantar Ekosistem Big Data (Teori & Filosofi)</a>
+            <a href="#modul1_part2">Modul 1 (Lanjutan): Taksonomi 10V Big Data</a>
+            <a href="#modul1_part3">Modul 1 (Lanjutan): Arsitektur Sistem Terdistribusi</a>
+            <a href="#modul1_part4">Modul 1 (Lanjutan): Implementasi Teknis & Simulasi</a>
+            <a href="#modul1_part5">Modul 1 (Lanjutan): Analisis Kualitas & Nilai Data</a>
+            <a href="#modul2">Modul 2: Arsitektur & Konsep Komputasi Terdistribusi</a>
+            <a href="#modul3">Modul 3: Teknologi Penyimpanan & Optimasi File (Parquet)</a>
+            <a href="#modul4">Modul 4: Data Ingestion (Batch & Streaming)</a>
+            <a href="#modul5">Modul 5: Pemrosesan Batch Lanjut (Spark SQL & Optimization)</a>
+            <a href="#modul6">Modul 6: Pemrosesan Stream Real-time (Structured Streaming)</a>
+            <a href="#modul7">Modul 7: Analitik Deskriptif & Diagnostik (Advanced SQL)</a>
+            <a href="#modul8">Modul 8: Machine Learning Skala Besar (Spark MLlib)</a>
+            <a href="#modul9">Modul 9: Visualisasi Data & Pengambilan Keputusan</a>
+            <a href="#modul10">Modul 10: Studi Kasus Bisnis (RFM & Market Basket Analysis)</a>
+            <a href="#modul11">Modul 11: Tata Kelola, Keamanan & Etika Data</a>
+            <a href="#modul12">Modul 12: Studi Kasus Lintas Sektor</a>
+        </div>
+    </div>
+
+    <!-- MODUL 1: PART 1 (TEORI) -->
+    <div class="page" id="modul1_part1">
+        <h2>Modul 1: Pengantar Ekosistem Big Data</h2>
+        <h3>Bagian 1: Landasan Filosofis dan Paradigma Sains Data</h3>
+
+        <h4>1.1. Pendahuluan: Dari Kelangkaan ke Kelimpahan Data</h4>
+        <p>Dalam sejarah komputasi, kita telah beralih dari era kelangkaan data (<em>data scarcity</em>), di mana setiap
+            byte penyimpanan sangat mahal dan data yang dikumpulkan sangat selektif, menuju era kelimpahan data
+            (<em>data abundance</em>). Perubahan ini bukan sekadar peningkatan kuantitas, melainkan transformasi
+            fundamental dalam cara kita memandang, mengelola, dan mengekstrak nilai dari informasi.</p>
+
+        <p>Jim Gray, pemenang Turing Award, menggambarkan evolusi ini sebagai "Paradigma Keempat" dalam sains (<em>The
+                Fourth Paradigm</em>). Paradigma pertama adalah empiris (observasi), kedua adalah teoretis (hukum-hukum
+            fisika), ketiga adalah komputasional (simulasi), dan yang keempat adalah <strong>Eksplorasi Intensif Data
+                (Data-Intensive Discovery)</strong>. Dalam paradigma ini, penemuan tidak lagi dimulai dari hipotesis
+            (deduktif), melainkan dari pola yang muncul secara organik dari data itu sendiri (induktif).</p>
+
+        <div class="theory-box">
+            <strong>Konsep Kunci: Data Gravity (Gravitasi Data)</strong><br>
+            Istilah yang diperkenalkan oleh Dave McCrory ini menyatakan bahwa data memiliki "massa". Semakin besar
+            kumpulan data, semakin besar "gravitasi" yang dihasilkannya, yang menarik aplikasi dan layanan mendekat ke
+            arahnya. Dalam konteks Big Data, ini berarti <em>memindahkan data ke kode program</em> menjadi sangat mahal
+            dan tidak efisien. Sebaliknya, arsitektur modern (seperti Hadoop dan Spark) mengadopsi prinsip <strong>Data
+                Locality</strong>: memindahkan kode program (yang berukuran kecil) ke node di mana data disimpan.
+        </div>
+
+        <h4>1.2. Definisi Akademik dan Batasan Big Data</h4>
+        <p>Secara akademis, definisi Big Data sering merujuk pada batasan teknologi konvensional. Gartner (2012)
+            mendefinisikan Big Data sebagai: <em>"Aset informasi dengan volume tinggi, kecepatan tinggi, dan/atau
+                variasi tinggi yang menuntut bentuk pemrosesan informasi yang inovatif dan hemat biaya untuk
+                memungkinkan peningkatan wawasan, pengambilan keputusan, dan otomatisasi proses."</em></p>
+
+        <p>Definisi ini menyiratkan bahwa "Big" adalah target yang bergerak. Apa yang dianggap Big Data pada tahun 2000
+            (misalnya 1 TB) mungkin dianggap data biasa pada tahun 2024. Oleh karena itu, batasan Big Data lebih tepat
+            didefinisikan sebagai titik di mana teknologi <em>single-node</em> (seperti RDBMS tradisional atau Excel)
+            gagal memenuhi persyaratan kinerja (throughput/latency) atau kapasitas penyimpanan.</p>
+
+        <h4>1.3. Evolusi Teknologi Pengolahan Data</h4>
+        <ul>
+            <li><strong>Era Basis Data Relasional (1970-2000):</strong> Fokus pada struktur yang kaku, integritas
+                transaksional (ACID), dan efisiensi penyimpanan (Normalisasi) karena mahalnya disk.</li>
+            <li><strong>Era Web 2.0 & Hadoop (2000-2010):</strong> Ledakan data internet (log, teks). Google
+                mempublikasikan makalah GFS dan MapReduce, melahirkan Apache Hadoop. Fokus pada skalabilitas horizontal
+                menggunakan perangkat keras komoditas.</li>
+            <li><strong>Era Spark & Real-time (2010-2020):</strong> Kebutuhan akan kecepatan. Apache Spark
+                memperkenalkan pemrosesan <em>In-Memory</em> yang 100x lebih cepat dari MapReduce. Munculnya Stream
+                Processing untuk data IoT.</li>
+            <li><strong>Era Modern (2020-Sekarang):</strong> <em>Cloud-Native</em>, pemisahan Compute & Storage, Data
+                Lakehouse (penyatuan Data Lake dan Data Warehouse), dan integrasi AI/ML yang mendalam.</li>
+        </ul>
+    </div>
+
+    <!-- MODUL 1: PART 2 (10 Vs) -->
+    <div class="page" id="modul1_part2">
+        <h3>Bagian 2: Taksonomi Karakteristik Data (The 10 Vs)</h3>
+        <p>Meskipun konsep awal hanya mengenal 3V (Volume, Velocity, Variety), kompleksitas sistem modern menuntut
+            perluasan dimensi karakteristik data menjadi 10V untuk analisis yang komprehensif. Berikut adalah analisis
+            mendalam setiap dimensi:</p>
+
+        <h4>1. Volume (Ukuran & Skala)</h4>
+        <p>Mengacu pada besarnya data yang dihasilkan. Skala telah bergeser dari Terabyte (TB) ke Zettabyte (ZB).
+            Tantangan utamanya bukan lagi biaya penyimpanan (storage cost) yang terus turun, melainkan biaya manajemen,
+            indeksasi, dan <em>retrieval</em>. Solusi arsitekturalnya adalah <em>Distributed File Systems</em> (HDFS)
+            dan <em>Object Storage</em> (S3).</p>
+
+        <h4>2. Velocity (Kecepatan & Latensi)</h4>
+        <p>Kecepatan data masuk (ingestion rate) dan urgensi pemrosesan (time-to-insight). Data sensor IoT bisa
+            menghasilkan ribuan event per detik. Dalam konteks <em>Algorithmic Trading</em>, keterlambatan milidetik
+            bisa berarti kerugian jutaan dolar. Tantangan ini melahirkan teknologi <em>Stream Processing</em> (Kafka,
+            Flink).</p>
+
+        <h4>3. Variety (Keragaman Format)</h4>
+        <p>Heterogenitas format data menjadi tantangan integrasi terbesar.
+        <ul>
+            <li><strong>Terstruktur:</strong> RDBMS (Schema-on-Write). Sangat kaku namun efisien untuk query.</li>
+            <li><strong>Semi-Terstruktur:</strong> JSON, XML, Log Server. Memiliki tag/marker tapi skema fleksibel
+                (Schema-on-Read).</li>
+            <li><strong>Tidak Terstruktur:</strong> Video, Audio, Teks bebas, Citra satelit. Membutuhkan teknik
+                ekstraksi fitur (NLP, CV) sebelum bisa dianalisis secara kuantitatif.</li>
+        </ul>
+        </p>
+
+        <h4>4. Veracity (Kebenaran & Kualitas)</h4>
+        <p>Tingkat ketidakpastian data. Meliputi bias, noise, abnormalitas, duplikasi, dan inkonsistensi. Data media
+            sosial memiliki volume tinggi tapi veracity rendah (banyak bot/hoax). Prinsip "Garbage In, Garbage Out"
+            berlaku mutlak di sini.</p>
+
+        <h4>5. Value (Nilai Bisnis)</h4>
+        <p>Utilitas ekonomi data. Data "sampah" (noise) memiliki volume tinggi tapi value rendah. Tantangannya adalah
+            mengekstrak sinyal berharga dari noise tersebut. Nilai data sering kali bersifat laten dan baru muncul
+            setelah dikombinasikan dengan dataset lain.</p>
+
+        <h4>6. Validity (Validitas)</h4>
+        <p>Ketepatan data untuk tujuan tertentu dan rentang waktu tertentu. Data alamat pelanggan yang valid 5 tahun
+            lalu mungkin tidak valid hari ini meskipun formatnya benar.</p>
+
+        <h4>7. Variability (Variabilitas)</h4>
+        <p>Inkonsistensi dalam aliran data. Lonjakan trafik (burst) saat event tertentu (misal: Harbolnas atau serangan
+            DDoS) memerlukan sistem yang elastis (Auto-scaling).</p>
+
+        <h4>8. Venue (Lokasi)</h4>
+        <p>Lokasi fisik data (Cloud, Edge, On-premise). Berkaitan dengan latensi jaringan dan kedaulatan data (Data
+            Sovereignty/GDPR).</p>
+
+        <h4>9. Vocabulary (Kosakata & Semantik)</h4>
+        <p>Semantik data. Apakah definisi "Customer" di departemen Pemasaran sama dengan di departemen Keuangan? Masalah
+            ini diselesaikan dengan Data Governance dan Master Data Management (MDM).</p>
+
+        <h4>10. Vagueness (Kekaburan)</h4>
+        <p>Ambiguitas makna, terutama dalam data tidak terstruktur. Contoh: Kalimat sarkasme dalam analisis sentimen
+            bisa disalahartikan oleh algoritma sebagai sentimen positif.</p>
+    </div>
+
+    <!-- MODUL 1: PART 3 (ARSITEKTUR) -->
+    <div class="page" id="modul1_part3">
+        <h3>Bagian 3: Arsitektur Sistem dan Hukum Skalabilitas</h3>
+
+        <h4>3.1. Analisis Perbandingan: RDBMS Monolitik vs Big Data Terdistribusi</h4>
+        <p>Tabel berikut menguraikan perbedaan fundamental dalam filosofi desain antara sistem tradisional dan modern.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="20%">Dimensi</th>
+                    <th width="40%">RDBMS (Monolitik)</th>
+                    <th width="40%">Big Data (Terdistribusi)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Filosofi Scaling</strong></td>
+                    <td><strong>Vertical (Scale-Up):</strong> Menambah CPU/RAM pada satu node. Biaya eksponensial dan
+                        ada batas fisik.</td>
+                    <td><strong>Horizontal (Scale-Out):</strong> Menambah jumlah node komoditas. Biaya linear dan
+                        teoritis tak terbatas.</td>
+                </tr>
+                <tr>
+                    <td><strong>Teorema CAP</strong></td>
+                    <td><strong>CA (Consistency-Availability):</strong> Mengutamakan konsistensi ketat (ACID), sulit
+                        menoleransi partisi jaringan.</td>
+                    <td><strong>AP atau CP:</strong> Menerima <em>Eventual Consistency</em> (BASE) demi ketersediaan
+                        (Availability) atau toleransi partisi (Partition Tolerance).</td>
+                </tr>
+                <tr>
+                    <td><strong>Model Skema</strong></td>
+                    <td><strong>Schema-on-Write:</strong> Struktur didefinisikan sebelum data masuk. Lambat saat
+                        ingestion, cepat saat query.</td>
+                    <td><strong>Schema-on-Read:</strong> Struktur diterapkan saat data dibaca. Cepat saat ingestion,
+                        beban ada pada saat query.</td>
+                </tr>
+                <tr>
+                    <td><strong>Fault Tolerance</strong></td>
+                    <td>Mengandalkan hardware high-end (RAID, UPS).</td>
+                    <td>Software-defined. Replikasi data antar node menangani kegagalan hardware.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>3.2. Hukum Amdahl dan Batas Paralelisme</h4>
+        <p>Dalam komputasi paralel, Hukum Amdahl memberikan peringatan penting: peningkatan kecepatan (speedup) program
+            dibatasi oleh bagian program yang harus dijalankan secara serial.</p>
+
+        <div class="highlight-box">
+            <strong>Formula:</strong> S(n) = 1 / ((1-p) + (p/n))
+        </div>
+        <ul>
+            <li><code>S(n)</code>: Speedup teoretis.</li>
+            <li><code>n</code>: Jumlah prosesor/node.</li>
+            <li><code>p</code>: Proporsi program yang bisa diparalelkan.</li>
+        </ul>
+
+        <p><strong>Implikasi Praktis:</strong> Jika 5% dari proses ETL Anda bersifat serial (misal: inisialisasi koneksi
+            driver atau pengumpulan hasil akhir ke satu node), maka meskipun Anda menggunakan ribuan server, speedup
+            maksimum sistem tidak akan pernah melebihi 20x. Oleh karena itu, arsitektur Big Data modern (seperti Spark)
+            berfokus meminimalkan bagian serial dan komunikasi antar-node (seperti <em>Shuffle</em>).</p>
+
+        <h4>3.3. Persiapan Lingkungan Praktikum (Google Colab)</h4>
+        <p>Untuk praktikum ini, kita menggunakan Google Colab yang menyediakan lingkungan Linux virtual. Kita akan
+            menginstal Apache Spark secara manual. Kode berikut menginstal JVM, mengunduh binary Spark, dan
+            mengonfigurasi variabel lingkungan.</p>
+
+        <pre>
+# --- INSTALASI INFRASTRUKTUR ---
+# 1. Update sistem dan instal Java JDK 8 (Wajib untuk Spark/Scala)
+!apt-get update
+!apt-get install openjdk-8-jdk-headless -qq > /dev/null
+
+# 2. Unduh Apache Spark 3.4.1 (Versi Stabil dengan Hadoop 3)
+!wget -q https://archive.apache.org/dist/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
+
+# 3. Ekstraksi Binary
+!tar xf spark-3.4.1-bin-hadoop3.tgz
+
+# 4. Instalasi findspark (Bridge Python ke JVM Spark)
+!pip install -q findspark psutil
+
+# --- KONFIGURASI ENVIRONMENT ---
+import os
+os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
+os.environ["SPARK_HOME"] = "/content/spark-3.4.1-bin-hadoop3"
+
+# --- INISIALISASI SESSION ---
+import findspark
+findspark.init()
+from pyspark.sql import SparkSession
+import psutil
+
+# Konfigurasi memori driver dan executor untuk simulasi single-node cluster
+# Kita alokasikan 4GB RAM untuk executor agar mampu menangani simulasi volume besar
+spark = SparkSession.builder \
+    .master("local[*]") \
+    .appName("Advanced_BigData_Lab") \
+    .config("spark.ui.port", "4050") \
+    .config("spark.driver.memory", "4g") \
+    .getOrCreate()
+
+print(f"Environment Ready. Spark Version: {spark.version}")
+print(f"System RAM: {psutil.virtual_memory().total / (1024**3):.2f} GB")
+        </pre>
+    </div>
+
+    <!-- MODUL 1: PART 4 (SIMULASI TEKNIS) -->
+    <div class="page" id="modul1_part4">
+        <h3>Bagian 4: Implementasi Teknis dan Simulasi Karakteristik Data</h3>
+
+        <h4>4.1. Simulasi VOLUME: Skalabilitas dan Lazy Evaluation</h4>
+        <p>Spark menggunakan prinsip <em>Lazy Evaluation</em>. Transformasi pada data (seperti filter, map) tidak
+            dieksekusi seketika. Spark hanya mencatat "resep" (lineage). Eksekusi fisik baru terjadi saat
+            <em>Action</em> dipanggil. Ini memungkinkan Spark melakukan optimasi global (misal: menggabungkan filter dan
+            map) sebelum memproses data.
+        </p>
+
+        <p>Kode di bawah mensimulasikan pembuatan dataset 10 juta baris. Perhatikan perbedaan waktu antara definisi
+            DataFrame (instan) dan perhitungan Count (membutuhkan waktu komputasi nyata).</p>
+
+        <pre>
+from pyspark.sql.functions import rand, when, col, lit
+import time
+
+print("--- [SIMULASI VOLUME] ---")
+
+# Langkah 1: Definisi Transformasi (Lazy)
+# range() membuat RDD terdistribusi berisi angka urut
+# selectExpr memungkinkan penggunaan ekspresi SQL langsung
+t0 = time.time()
+df_volume = spark.range(0, 10000000)\
+    .selectExpr("id as transaction_id")\
+    .withColumn("amount", (rand() * 10000).cast("int"))\
+    .withColumn("category", when(rand() > 0.7, "Elektronik")
+                           .when(rand() > 0.4, "Fesen")
+                           .otherwise("Makanan"))\
+    .withColumn("is_fraud", when(rand() > 0.99, True).otherwise(False))
+
+print(f"Waktu Definisi DataFrame: {time.time() - t0:.6f} detik (Instan karena Lazy)")
+
+# Langkah 2: Mencetak Rencana Eksekusi (Query Plan)
+# Ini menunjukkan bagaimana Catalyst Optimizer merencanakan eksekusi
+print("\n--- Physical Plan (Catalyst Optimizer) ---")
+df_volume.explain()
+
+# Langkah 3: Eksekusi Fisik (Action)
+print("\n--- Memulai Komputasi ---")
+t1 = time.time()
+count = df_volume.count() # Action: memicu job
+fraud_count = df_volume.filter("is_fraud = true").count() # Action lain
+t2 = time.time()
+
+print(f"Total Transaksi: {count:,}")
+print(f"Total Fraud Terdeteksi: {fraud_count:,}")
+print(f"Waktu Eksekusi Total: {t2 - t1:.4f} detik")
+        </pre>
+
+        <h4>4.2. Simulasi VELOCITY: Generator Stream Data</h4>
+        <p>Dalam skenario nyata, data velocity ditangani oleh message broker seperti Apache Kafka. Di sini, kita
+            menggunakan generator Python untuk mensimulasikan karakteristik aliran data log server: kedatangan data yang
+            kontinu, format timestamp, dan variabilitas latensi (Burst traffic).</p>
+
+        <pre>
+import random
+import datetime
+import sys
+
+def simulate_velocity_stream(events_count=20, delay=0.2):
+    print("\n--- [SIMULASI VELOCITY: Log Stream] ---")
+    
+    ips = ["192.168.1.10", "10.0.0.5", "172.16.0.12", "192.168.1.15"]
+    endpoints = ["/home", "/product/123", "/cart", "/checkout", "/login"]
+    status_codes = [200, 200, 200, 200, 404, 500, 302]
+    
+    print(f"Generating {events_count} events with {delay}s delay...\n")
+    
+    for i in range(events_count):
+        # Timestamp presisi mikrodetik
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
+        ip = random.choice(ips)
+        endpoint = random.choice(endpoints)
+        status = random.choice(status_codes)
+        
+        # Simulasi latensi respons server (Gaussian Distribution)
+        # Rata-rata 50ms, deviasi 20ms
+        latency = max(5, int(random.gauss(50, 20))) 
+        
+        # Format Log: Apache Common Log Format (Simplified)
+        log_entry = f"[{timestamp}] {ip} GET {endpoint} HTTP/1.1 {status} {latency}ms"
+        
+        # Simulasi output stream ke stdout
+        print(log_entry)
+        
+        # Simulasi Burst Traffic: Jeda waktu acak
+        time.sleep(random.uniform(delay/2, delay*1.5))
+
+simulate_velocity_stream()
+        </pre>
+    </div>
+
+    <!-- MODUL 1: PART 5 (ANALISIS LANJUTAN) -->
+    <div class="page" id="modul1_part5">
+        <h3>Bagian 5: Analisis Kualitas (Veracity) dan Nilai (Value)</h3>
+
+        <h4>4.3. Simulasi VARIETY: Penanganan Data Semi-Terstruktur</h4>
+        <p>Data JSON sering kali memiliki skema yang bersarang (<em>nested</em>) dan tidak konsisten. Spark mampu
+            melakukan <em>Schema Inference</em>, yaitu membaca sampel data untuk menebak struktur skema secara otomatis.
+            Ini sangat berguna untuk data semi-terstruktur.</p>
+        <pre>
+print("\n--- [SIMULASI VARIETY: Nested JSON] ---")
+
+# Dataset JSON dengan struktur kompleks (Array dan Struct)
+json_data = [
+    """{"user_id": 1, "profile": {"name": "Andi", "city": "Jakarta"}, "orders": [101, 102], "metadata": "active"}""",
+    """{"user_id": 2, "profile": {"name": "Budi", "city": "Bandung"}, "orders": [], "metadata": null}""",
+    """{"user_id": 3, "profile": {"name": "Citra"}, "orders": [103], "metadata": "inactive"}""" 
+    # User 3 tidak punya 'city', ini adalah Schema Evolution case
+]
+
+rdd_json = spark.sparkContext.parallelize(json_data)
+df_variety = spark.read.json(rdd_json)
+
+print("Skema Terinferensi (Perhatikan field yang nullable):")
+df_variety.printSchema()
+
+print("Data Tabular:")
+# Mengakses nested field menggunakan notasi titik
+df_variety.select(
+    "user_id", 
+    "profile.name", 
+    "profile.city", 
+    "orders"
+).show()
+        </pre>
+
+        <h4>4.4. Simulasi VERACITY & VALUE: Audit Kualitas dan ROI</h4>
+        <p>Bagian ini mensimulasikan audit kualitas data. Data yang hilang atau tidak valid bukan hanya masalah teknis,
+            tetapi masalah finansial. Kita akan menghitung "Invisible Revenue Loss" akibat data yang buruk.</p>
+
+        <pre>
+print("\n--- [SIMULASI VERACITY & VALUE] ---")
+
+# Dataset Transaksi dengan masalah kualitas sengaja
+raw_data = [
+    (1, "Laptop", 15000000),
+    (2, "Mouse", 250000),
+    (3, None, 500000),          # Missing Product (Integrity Issue)
+    (4, "Keyboard", None),      # Missing Amount (Completeness Issue)
+    (5, "Monitor", -1500000),   # Invalid Amount (Consistency Issue)
+    (6, "Laptop", 15000000)
+]
+df_veracity = spark.createDataFrame(raw_data, ["id", "product", "amount"])
+
+# 1. Audit Veracity (Validitas)
+from pyspark.sql.functions import count, when, col, sum as _sum
+
+print("Data Mentah:")
+df_veracity.show()
+
+# Menghitung baris valid vs invalid
+# Kriteria Valid: Tidak ada null dan amount > 0
+df_valid = df_veracity.na.drop().filter(col("amount") > 0)
+valid_count = df_valid.count()
+total_count = df_veracity.count()
+
+# 2. Kalkulasi Value (Dampak Bisnis)
+# Asumsi: Kita kehilangan pendapatan dari data yang tidak tercatat dengan benar
+total_revenue_recorded = df_valid.agg(_sum("amount")).collect()[0][0]
+
+# Estimasi kerugian: Menggunakan rata-rata transaksi valid untuk mengisi data invalid
+avg_trx = df_valid.agg({"amount": "avg"}).collect()[0][0]
+invalid_count = total_count - valid_count
+estimated_loss = invalid_count * avg_trx
+
+print(f"Total Transaksi: {total_count}")
+print(f"Transaksi Valid: {valid_count} ({valid_count/total_count:.1%})")
+print(f"Revenue Tercatat: Rp {total_revenue_recorded:,.0f}")
+print(f"Estimasi Revenue Hilang (Data Loss): Rp {estimated_loss:,.0f}")
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis dan Laporan Modul 1</h4>
+            <ol>
+                <li><strong>Analisis Lazy Evaluation:</strong> Dalam simulasi Volume, jelaskan mengapa tidak ada
+                    penggunaan CPU/RAM yang signifikan saat baris <code>df_volume = spark.range(...)</code> dijalankan?
+                    Apa keuntungan arsitektur ini dibandingkan eksekusi <em>Eager</em> seperti di Pandas?</li>
+                <li><strong>Studi Kasus Variety:</strong> Lihat output simulasi JSON. Pada User ID 3, field
+                    `profile.city` bernilai `null` (karena tidak ada di data asli). Jelaskan bagaimana Spark menangani
+                    <em>missing schema field</em> pada data semi-terstruktur dan apa implikasinya jika data tersebut
+                    dimuat ke tabel SQL tradisional yang memiliki constraint <code>NOT NULL</code>.
+                </li>
+                <li><strong>Kalkulasi ROI Proyek Data:</strong> Berdasarkan simulasi Value, jika biaya perbaikan sistem
+                    data (Data Cleaning Pipeline) adalah Rp 10.000.000, apakah investasi tersebut layak dilakukan
+                    mengingat estimasi kerugian data saat ini? Jelaskan alasan Anda berdasarkan perhitungan ROI.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- MODUL 2: PART 1 (TEORI DASAR SISTEM TERDISTRIBUSI) -->
+    <div class="page" id="modul2_part1">
+        <h2>Modul 2: Arsitektur & Konsep Komputasi Terdistribusi</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Sistem Terdistribusi</h3>
+
+        <h4>1.1. Filosofi dan Evolusi: Mengapa Sistem Terdistribusi?</h4>
+        <p>Sistem terdistribusi didefinisikan sebagai sekumpulan komputer otonom yang tampak bagi penggunanya sebagai
+            satu sistem koheren (Tanenbaum & Van Steen). Dalam konteks Big Data, pergeseran dari sistem terpusat
+            (mainframe) ke terdistribusi didorong oleh batasan fisik pemrosesan tunggal. Hukum Moore, yang memprediksi
+            penggandaan transistor setiap dua tahun, mulai melambat dalam hal peningkatan kecepatan <em>clock speed</em>
+            prosesor tunggal karena batasan termodinamika (panas) dan kebocoran kuantum pada skala nanometer. Akibatnya,
+            industri beralih ke paralelisasi melalui <em>multi-core</em> dan klaster mesin komoditas.</p>
+
+        <div class="theory-box">
+            <strong>Analisis Kritis: 8 Kesesatan Komputasi Terdistribusi</strong><br>
+            L. Peter Deutsch dari Sun Microsystems merumuskan asumsi keliru yang sering dibuat oleh arsitek sistem
+            pemula:
+            <ol>
+                <li>Jaringan itu andal (Reliable).</li>
+                <li>Latensi adalah nol.</li>
+                <li>Bandwidth tidak terbatas.</li>
+                <li>Jaringan itu aman.</li>
+                <li>Topologi tidak berubah.</li>
+                <li>Hanya ada satu administrator.</li>
+                <li>Biaya transportasi data adalah nol.</li>
+                <li>Jaringan homogen.</li>
+            </ol>
+            Apache Spark dirancang secara spesifik untuk memitigasi kesesatan ini. Misalnya, mekanisme <em>Speculative
+                Execution</em> menangani latensi yang tidak seragam (<em>stragglers</em>), dan <em>Data Locality</em>
+            menangani biaya transportasi data yang mahal.
+        </div>
+
+        <h4>1.2. Hukum Komputasi Paralel: Amdahl vs Gustafson</h4>
+        <p>Memahami batas teoretis skalabilitas sangat krusial sebelum merancang klaster. Dua hukum utama yang mengatur
+            hal ini adalah:</p>
+
+        <p><strong>A. Hukum Amdahl (Fixed Workload)</strong></p>
+        <p>Hukum ini menyatakan bahwa peningkatan kecepatan (<em>speedup</em>) dari paralelisasi dibatasi oleh bagian
+            program yang harus dijalankan secara serial.
+            <br>Formula: $$ S_{latency}(s) = \frac{1}{(1-p) + \frac{p}{s}} $$
+            Dimana $p$ adalah proporsi kode yang dapat diparalelkan, dan $s$ adalah jumlah prosesor.
+            <br><em>Implikasi:</em> Jika 5% dari job Spark Anda berjalan di Driver (serial), maka maksimum speedup
+            adalah 20x, tidak peduli berapa ribu executor yang Anda tambahkan. Ini menekankan pentingnya meminimalkan
+            operasi di Driver (seperti <code>collect()</code>).
+        </p>
+
+        <p><strong>B. Hukum Gustafson (Fixed Time)</strong></p>
+        <p>Hukum ini lebih optimis dan relevan untuk Big Data. Ia menyatakan bahwa jika kita meningkatkan ukuran masalah
+            (volume data) seiring dengan penambahan prosesor, kita dapat mempertahankan efisiensi.
+            <br>Formula: $$ S_{throughput}(s) = 1 - p + s \times p $$
+            <br><em>Implikasi:</em> Big Data memungkinkan kita memproses dataset yang jauh lebih besar dalam waktu yang
+            sama dengan menambah node, bukan sekadar memproses dataset yang sama dengan lebih cepat.
+        </p>
+
+        <h4>1.3. Model Konsistensi: CAP dan BASE</h4>
+        <p>Dalam sistem terdistribusi skala besar, Teorema CAP (Consistency, Availability, Partition Tolerance) memaksa
+            kita untuk memilih <em>trade-off</em>. Karena Partisi Jaringan (P) adalah fakta kehidupan dalam jaringan
+            fisik, sistem harus memilih antara Konsistensi (C) atau Ketersediaan (A).</p>
+        <ul>
+            <li><strong>RDBMS Tradisional (ACID):</strong> Memilih Konsistensi. Transaksi harus atomik dan terisolasi.
+                Jika jaringan putus, sistem menolak permintaan.</li>
+            <li><strong>Sistem Big Data (BASE):</strong>
+                <ul>
+                    <li><strong>Basically Available:</strong> Sistem menjamin ketersediaan data (mungkin data
+                        lama/stale).</li>
+                    <li><strong>Soft state:</strong> Status sistem bisa berubah tanpa input eksternal (karena replikasi
+                        yang tertunda).</li>
+                    <li><strong>Eventual consistency:</strong> Sistem akan menjadi konsisten seiring waktu.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Apache Spark, sebagai engine pemrosesan (bukan penyimpanan), mewarisi model konsistensi dari lapisan
+            penyimpanannya (HDFS/S3). HDFS menjamin konsistensi yang kuat untuk penulisan file (sekali ditulis, semua
+            pembaca melihat data yang sama), namun S3 bersifat <em>eventually consistent</em> (meskipun kini sudah
+            strong consistency di beberapa region).</p>
+    </div>
+
+    <!-- MODUL 2: PART 2 (ANATOMI SPARK) -->
+    <div class="page" id="modul2_part2">
+        <h3>Bagian 2: Anatomi Internal dan Arsitektur JVM Spark</h3>
+
+        <h4>2.1. Arsitektur Driver-Executor: Tinjauan Mendalam</h4>
+        <p>Aplikasi Spark beroperasi sebagai serangkaian proses independen pada sebuah klaster. Objek
+            <code>SparkContext</code> di program utama (disebut <em>Driver program</em>) mengoordinasikan proses-proses
+            ini. Secara spesifik:
+        </p>
+
+        <ol>
+            <li><strong>Driver (The Brain):</strong>
+                <ul>
+                    <li>Menjalankan JVM (Java Virtual Machine) utama.</li>
+                    <li>Mengonversi kode pengguna (transformasi RDD/DataFrame) menjadi representasi logis, kemudian
+                        fisik.</li>
+                    <li>Menjadwalkan tugas pada executor.</li>
+                    <li>Menyimpan metadata tentang semua RDD dan partisi.</li>
+                    <li><strong>Peringatan Kritis:</strong> Driver adalah <em>Single Point of Failure</em> dan potensi
+                        leher botol. Operasi seperti <code>collect()</code> atau <code>take()</code> menarik data dari
+                        seluruh executor ke memori Driver. Jika data > RAM Driver, akan terjadi
+                        <code>OutOfMemoryError</code>.
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Executor (The Muscle):</strong>
+                <ul>
+                    <li>Proses JVM yang berjalan di setiap node pekerja.</li>
+                    <li>Menjalankan kode komputasi (Tasks) dan menyimpan hasil data di memori atau disk.</li>
+                    <li>Terisolasi satu sama lain; kerusakan pada satu executor tidak mematikan seluruh aplikasi (tugas
+                        akan dijadwalkan ulang).</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h4>2.2. Manajemen Memori Unified (Unified Memory Manager)</h4>
+        <p>Pemahaman tentang bagaimana Spark menggunakan RAM adalah kunci optimasi performa. Sejak Spark 1.6, digunakan
+            model memori terpadu yang fleksibel. Heap JVM dibagi menjadi:</p>
+
+        <table border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Zona Memori</th>
+                    <th>Fungsi</th>
+                    <th>Sifat Dinamis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Reserved Memory (300MB)</strong></td>
+                    <td>Dicadangkan untuk operasi internal Spark agar tidak crash.</td>
+                    <td>Tetap (Fixed).</td>
+                </tr>
+                <tr>
+                    <td><strong>User Memory (40%)</strong></td>
+                    <td>Menyimpan struktur data pengguna (Hashtables, objek kustom) dan metadata internal Spark.</td>
+                    <td>Digunakan untuk UDF, RDD lineage, dan dependensi DAG.</td>
+                </tr>
+                <tr>
+                    <td><strong>Spark Memory (60%)</strong></td>
+                    <td>Kolam utama yang dibagi menjadi <strong>Execution</strong> dan <strong>Storage</strong>.</td>
+                    <td>
+                        <ul>
+                            <li><strong>Storage Memory:</strong> Untuk data yang di-cache (<code>cache()</code>,
+                                <code>persist()</code>) dan variabel broadcast.
+                            </li>
+                            <li><strong>Execution Memory:</strong> Untuk objek sementara selama shuffle, join, sort, dan
+                                agregasi.</li>
+                            <li><em>Eviksi:</em> Jika Execution butuh ruang, ia bisa "mengusir" data Storage ke disk.
+                                Namun, Storage tidak bisa mengusir data Execution yang sedang dipakai. Ini
+                                memprioritaskan penyelesaian tugas di atas caching.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2.3. Project Tungsten dan Off-Heap Memory</h4>
+        <p>Salah satu inovasi terbesar Spark adalah <strong>Project Tungsten</strong>. Alih-alih bergantung sepenuhnya
+            pada objek Java (yang memiliki overhead memori besar dan biaya Garbage Collection tinggi), Tungsten
+            mengelola memori secara eksplisit (seperti C++) menggunakan <code>sun.misc.Unsafe</code>.</p>
+        <ul>
+            <li><strong>Binary Processing:</strong> Data disimpan dalam format biner kompak di memori, bukan sebagai
+                objek Java. Ini mengurangi jejak memori secara drastis.</li>
+            <li><strong>Cache-aware computation:</strong> Algoritma didesain untuk memaksimalkan penggunaan L1/L2/L3
+                cache pada CPU modern.</li>
+            <li><strong>Code Generation:</strong> Menghasilkan bytecode Java yang optimal pada saat runtime (Whole-Stage
+                Code Gen) untuk menghilangkan overhead pemanggilan fungsi virtual.</li>
+        </ul>
+    </div>
+
+    <!-- MODUL 2: PART 3 (RDD & DAG) -->
+    <div class="page" id="modul2_part3">
+        <h3>Bagian 3: Teori Graf Eksekusi (RDD & DAG)</h3>
+
+        <h4>3.1. RDD: Aljabar Himpunan Terdistribusi</h4>
+        <p>RDD (Resilient Distributed Dataset) bukan sekadar array. Ia adalah abstraksi aljabar yang memungkinkan
+            operasi fungsional (map, filter, reduce) pada data terpartisi. RDD memiliki lima properti internal utama:
+        </p>
+        <ol>
+            <li><strong>A list of partitions:</strong> Daftar potongan data atomik.</li>
+            <li><strong>A function for computing each split:</strong> Logika kode yang dijalankan pada setiap partisi.
+            </li>
+            <li><strong>A list of dependencies on other RDDs:</strong> Silsilah (Lineage) untuk pemulihan kesalahan.
+            </li>
+            <li><strong>Optionally, a Partitioner:</strong> Untuk RDD key-value (misal: HashPartitioner), menentukan
+                bagaimana data didistribusikan.</li>
+            <li><strong>Optionally, a list of preferred locations:</strong> Lokasi blok data (HDFS block location) untuk
+                optimasi <em>Data Locality</em>.</li>
+        </ol>
+
+        <h4>3.2. Directed Acyclic Graph (DAG) Scheduler</h4>
+        <p>Kekuatan utama Spark dibandingkan MapReduce adalah engine eksekusi berbasis DAG. MapReduce memaksakan
+            struktur dua tahap (Map lalu Reduce), yang memaksa penulisan ke disk di antaranya. Spark membangun graf
+            komputasi yang kompleks dan melakukan optimasi global.</p>
+
+        <p><strong>Mekanisme Penjadwalan:</strong></p>
+        <ul>
+            <li>Saat pengguna mendefinisikan transformasi (misal <code>rdd.map().filter().join()</code>), Spark
+                membangun <strong>Logical Plan</strong>.</li>
+            <li>Ketika <em>Action</em> dipanggil, Logical Plan dikonversi menjadi <strong>Physical Plan</strong> oleh
+                DAGScheduler.</li>
+            <li>DAGScheduler memecah graf menjadi <strong>Stages</strong>. Batas antar stage (<em>Stage Boundary</em>)
+                ditentukan oleh operasi <strong>Shuffle</strong>.</li>
+            <li><strong>Pipelining:</strong> Di dalam satu stage, transformasi yang bersifat <em>Narrow Dependency</em>
+                (seperti map, filter) digabungkan menjadi satu tugas tunggal. Data diproses baris demi baris melalui
+                pipeline fungsi tanpa disimpan sementara, memaksimalkan cache locality.</li>
+        </ul>
+
+        <h4>3.3. Fault Tolerance via Lineage</h4>
+        <p>Spark menyediakan toleransi kesalahan yang efisien tanpa replikasi data memori (yang mahal). Jika sebuah
+            partisi hilang (karena executor mati), Spark melihat graf dependensi (Lineage). Karena RDD bersifat
+            deterministik dan immutable, Spark cukup menjalankan ulang komputasi pada partisi yang hilang tersebut.
+            Strategi ini disebut <em>Recomputation</em>. Untuk transformasi yang rantai lineage-nya sangat panjang,
+            Spark mendukung <strong>Checkpointing</strong> untuk memutus rantai dan menyimpan data ke disk yang andal
+            (HDFS).</p>
+    </div>
+
+    <!-- MODUL 2: PART 4 (PARTISI & SHUFFLE) -->
+    <div class="page" id="modul2_part4">
+        <h3>Bagian 4: Manajemen Partisi dan Mekanisme Shuffle</h3>
+
+        <h4>4.1. Strategi Partisi dan Paralelisme</h4>
+        <p>Partisi adalah unit atomik paralelisme di Spark. Kinerja aplikasi sangat bergantung pada konfigurasi partisi
+            yang tepat.</p>
+        <ul>
+            <li><strong>Too Few Partitions:</strong> Kurang memanfaatkan sumber daya klaster. Jika Anda memiliki 100
+                core tetapi hanya 10 partisi, 90 core akan menganggur (idle).</li>
+            <li><strong>Too Many Partitions:</strong> Overhead manajemen tugas yang berlebihan. Setiap partisi memicu
+                overhead penjadwalan, serialisasi task, dan pembuatan objek metadata. Jika waktu pemrosesan data (ms)
+                lebih kecil dari waktu overhead (ms), sistem menjadi tidak efisien.</li>
+        </ul>
+        <p><strong>Aturan Praktis (Rule of Thumb):</strong> Idealnya 2-4 partisi per CPU core dalam klaster, dengan
+            ukuran data per partisi sekitar 128MB - 200MB (sesuai ukuran blok HDFS).</p>
+
+        <h4>4.2. Shuffle: Anatomi Operasi Termahal</h4>
+        <p>Shuffle adalah proses redistribusi data antar partisi/node, yang diperlukan untuk operasi seperti
+            <code>groupByKey</code>, <code>reduceByKey</code>, atau <code>join</code>. Shuffle melibatkan 3 jenis
+            overhead:
+        </p>
+        <ol>
+            <li><strong>Disk I/O:</strong> Map tasks menulis data output ke buffer memori, yang kemudian ditumpahkan
+                (spill) ke disk lokal executor sebagai file sementara.</li>
+            <li><strong>Network I/O:</strong> Reduce tasks menarik (fetch) blok data yang relevan dari berbagai node
+                mapper melalui jaringan.</li>
+            <li><strong>CPU:</strong> Diperlukan untuk serialisasi data sebelum kirim, deserialisasi saat terima, dan
+                pengurutan (sorting) data.</li>
+        </ol>
+        <div class="warning-box">
+            <strong>Optimasi:</strong> Hindari <code>groupByKey</code> karena operasi ini mengirimkan seluruh data ke
+            reducer sebelum agregasi. Gunakan <code>reduceByKey</code> yang melakukan <em>Map-Side Aggregation</em>
+            (pengurangan data lokal) sebelum dikirim lewat jaringan, mengurangi traffic shuffle secara signifikan.
+        </div>
+
+        <h4>4.3. Data Skew (Ketimpangan Data)</h4>
+        <p>Data Skew adalah pembunuh performa nomor satu dalam sistem terdistribusi. Ini terjadi ketika distribusi data
+            tidak merata antar partisi (misal: satu kunci "NULL" memiliki 90% data).
+            <br><em>Dampak:</em> Fenomena "Straggler Task", di mana 99% tugas selesai dalam hitungan detik, tetapi 1
+            tugas memakan waktu berjam-jam karena memproses partisi raksasa. Seluruh stage harus menunggu straggler ini
+            selesai.
+            <br><em>Mitigasi:</em> Teknik <strong>Salting</strong> (menambahkan prefiks acak pada kunci yang miring
+            untuk memecahnya) atau <strong>Broadcast Join</strong> (menghindari shuffle untuk tabel kecil).
+        </p>
+    </div>
+
+    <!-- MODUL 2: PART 5 (IMPLEMENTASI PRAKTIS) -->
+    <div class="page" id="modul2_part5">
+        <h3>Bagian 5: Implementasi Praktis dan Studi Kasus</h3>
+
+        <h4>5.1. Studi Kasus 1: Validasi Immutability dan Lineage</h4>
+        <p>Percobaan ini membuktikan sifat RDD yang tidak dapat diubah dan bagaimana transformasi menciptakan graf
+            dependensi baru.</p>
+        <pre>
+import time
+
+print("--- DEMO 1: ANALISIS RDD & LINEAGE ---")
+# 1. Inisialisasi: Membuat RDD dengan 4 Partisi
+# sc.parallelize mendistribusikan koleksi Python ke klaster
+rdd_base = spark.sparkContext.parallelize(range(1, 10001), numSlices=4)
+
+print(f"ID RDD Awal: {rdd_base.id()}")
+print(f"Jumlah Partisi: {rdd_base.getNumPartitions()}")
+
+# 2. Transformasi: Map
+# Operasi ini bersifat 'lazy'. Belum ada data yang diproses.
+# RDD baru (rdd_map) hanya berisi pointer ke rdd_base dan fungsi transformasi.
+rdd_map = rdd_base.map(lambda x: x + 1)
+
+print(f"ID RDD Hasil Map: {rdd_map.id()}")
+print(f"Apakah ID Sama? {rdd_base.id() == rdd_map.id()}") 
+# Output False membuktikan rdd_base tidak berubah (Immutable).
+
+# 3. Inspeksi Lineage
+print("\n--- Lineage Graph (Debug String) ---")
+# Menampilkan struktur dependensi. Perhatikan indentasi yang menunjukkan parent-child.
+print(rdd_map.toDebugString().decode())
+        </pre>
+
+        <h4>5.2. Studi Kasus 2: Dampak Shuffle pada Kinerja (Narrow vs Wide)</h4>
+        <p>Kita akan membandingkan waktu eksekusi antara operasi yang <em>pipelineable</em> dengan operasi yang memicu
+            shuffle jaringan.</p>
+        <pre>
+print("\n--- DEMO 2: BENCHMARKING SHUFFLE ---")
+# Dataset simulasi: 1 Juta baris (cukup besar untuk melihat efek overhead)
+rdd_data = spark.sparkContext.parallelize(range(1, 1000000), numSlices=8)
+
+# KASUS A: Narrow Dependency (Map)
+# Tidak ada pertukaran data antar node. Sangat cepat.
+start = time.time()
+count_narrow = rdd_data.map(lambda x: (x % 100, x)).count()
+end_narrow = time.time()
+print(f"Waktu Narrow Transformation: {end_narrow - start:.4f} detik")
+
+# KASUS B: Wide Dependency (ReduceByKey)
+# Memicu Full Shuffle. Data harus diurutkan dan dikirim antar partisi.
+# Langkah 1: Map ke Key-Value pair
+rdd_kv = rdd_data.map(lambda x: (x % 100, x))
+start = time.time()
+# Langkah 2: Reduce berdasarkan Key
+count_wide = rdd_kv.reduceByKey(lambda a, b: a + b).count()
+end_wide = time.time()
+
+print(f"Waktu Wide Transformation (Shuffle): {end_wide - start:.4f} detik")
+print(f"Overhead Factor: {(end_wide - start) / (end_narrow - start):.2f}x lebih lambat")
+
+# Analisis Lineage untuk membuktikan adanya Shuffle
+print("\nLineage Wide Dependency (Cari 'ShuffledRDD'):")
+print(rdd_kv.reduceByKey(lambda a, b: a + b).toDebugString().decode())
+        </pre>
+
+        <h4>5.3. Studi Kasus 3: Optimasi Partisi (Coalesce vs Repartition)</h4>
+        <p>Skenario: Anda baru saja memfilter dataset besar sehingga ukurannya berkurang drastis (misal: menyisakan 1%
+            data). Anda ingin mengurangi jumlah partisi agar efisien.</p>
+        <pre>
+print("\n--- DEMO 3: OPTIMASI PARTISI ---")
+# Buat RDD dengan banyak partisi (100)
+rdd_many_parts = spark.sparkContext.parallelize(range(1, 1000000), numSlices=100)
+print(f"Partisi Awal: {rdd_many_parts.getNumPartitions()}")
+
+# Metode 1: Repartition (Full Shuffle)
+# Menyeimbangkan data secara sempurna tapi mahal
+start = time.time()
+rdd_repart = rdd_many_parts.repartition(10)
+rdd_repart.count()
+print(f"Waktu Repartition (100->10): {time.time() - start:.4f} detik")
+
+# Metode 2: Coalesce (Minimize Shuffle)
+# Menggabungkan partisi yang ada di node yang sama. Cepat tapi bisa tidak seimbang.
+start = time.time()
+rdd_coalesce = rdd_many_parts.coalesce(10)
+rdd_coalesce.count()
+print(f"Waktu Coalesce (100->10): {time.time() - start:.4f} detik")
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis dan Laporan Modul 2</h4>
+            <p>Jawablah pertanyaan berikut dengan mendalam berdasarkan hasil eksperimen di atas:</p>
+            <ol>
+                <li><strong>Analisis Mekanisme Shuffle:</strong> Jelaskan secara rinci apa yang terjadi pada jaringan
+                    dan disk saat operasi <code>reduceByKey</code> dijalankan. Mengapa operasi ini disebut sebagai
+                    "barrier" dalam eksekusi Spark?</li>
+                <li><strong>Strategi Memori:</strong> Jika Anda memiliki dataset 50GB dan klaster dengan total RAM 32GB,
+                    jelaskan mekanisme <em>spill-to-disk</em> yang dilakukan Spark. Apa dampaknya terhadap performa
+                    dibandingkan dengan pemrosesan in-memory murni?</li>
+                <li><strong>Desain Partisi:</strong> Dalam skenario apa penggunaan <code>coalesce()</code> dapat
+                    berbahaya dan menyebabkan OOM (Out of Memory) pada salah satu executor? (Petunjuk: Hubungkan dengan
+                    distribusi data yang tidak merata).</li>
+                <li><strong>Narrow vs Wide:</strong> Berikan contoh 3 transformasi yang termasuk <em>Narrow
+                        Dependency</em> dan 3 transformasi yang termasuk <em>Wide Dependency</em> selain yang sudah
+                    dicontohkan. Jelaskan alasannya.</li>
+            </ol>
+        </div>
+    </div>
+    <!-- ... (Bagian sebelumnya Modul 1 & 2 tetap sama) ... -->
+
+    <!-- MODUL 3: PART 1 (TEORI PENYIMPANAN) -->
+    <div class="page" id="modul3">
+        <h2>Modul 3: Teknologi Penyimpanan & Optimasi File</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Sistem Penyimpanan Big Data</h3>
+
+        <h4>3.1. Evolusi Model Penyimpanan: Dari NSM ke DSM</h4>
+        <p>Dalam desain sistem basis data, keputusan paling fundamental adalah bagaimana merepresentasikan tabel logis
+            (dua dimensi) ke dalam media penyimpanan fisik (satu dimensi/linear) seperti Hard Disk Drive (HDD) atau
+            Solid State Drive (SSD). Secara akademis, terdapat dua paradigma utama:</p>
+
+        <p><strong>1. N-ary Storage Model (NSM) atau Row-Oriented</strong></p>
+        <p>Model ini, yang digunakan oleh RDBMS tradisional (MySQL, PostgreSQL, Oracle), menyimpan data baris demi baris
+            secara berurutan dalam <em>page</em> disk. Header <em>page</em> berisi offset untuk setiap baris.
+            <br><em>Keunggulan:</em> Sangat efisien untuk beban kerja <strong>OLTP (Online Transaction
+                Processing)</strong>. Ketika aplikasi ingin menulis (INSERT) atau membaca satu entitas utuh (SELECT *
+            WHERE id=...), head disk hanya perlu melakukan satu kali pencarian (seek) dan membaca data secara
+            sekuensial.
+            <br><em>Kelemahan:</em> Sangat tidak efisien untuk beban kerja <strong>OLAP (Online Analytical
+                Processing)</strong>. Misalkan tabel memiliki 100 kolom dan analis hanya ingin menghitung rata-rata dari
+            kolom 'gaji'. Dalam NSM, sistem harus membaca <strong>seluruh 100 kolom</strong> dari disk ke memori (karena
+            data disimpan berurutan), lalu membuang 99 kolom yang tidak terpakai. Ini memboroskan I/O bandwidth dan
+            cache CPU secara masif.
+        </p>
+
+        <p><strong>2. Decomposition Storage Model (DSM) atau Column-Oriented</strong></p>
+        <p>Model ini, yang dipopulerkan oleh sistem seperti C-Store (kemudian Vertica) dan MonetDB, memecah tabel secara
+            vertikal. Setiap kolom disimpan dalam file atau segmen disk yang terpisah.
+            <br><em>Keunggulan:</em> Superior untuk <strong>OLAP</strong>.
+        <ul>
+            <li><strong>I/O Pruning:</strong> Query yang hanya membutuhkan 3 kolom hanya akan membaca 3 kolom tersebut
+                dari disk. Penghematan I/O bisa mencapai 90-95% untuk tabel lebar.</li>
+            <li><strong>Cache Efficiency:</strong> Data dalam satu kolom memiliki tipe yang sama (homogen). Ini
+                memungkinkan CPU memuat data ke L1/L2 cache secara padat dan memprosesnya dengan instruksi vektor
+                (SIMD).</li>
+            <li><strong>Kompresi:</strong> Karena data homogen (misal: kolom 'Tahun' berisi 2023, 2023, 2023...), rasio
+                kompresi bisa sangat tinggi dibandingkan data heterogen pada baris.</li>
+        </ul>
+        <br><em>Kelemahan:</em> Mahal untuk rekonstruksi baris (Tuple Reconstruction). Mengambil satu baris utuh
+        memerlukan penggabungan (join) data dari banyak file kolom yang berbeda, menyebabkan banyak <em>random
+            seek</em>.</p>
+
+        <h4>3.2. Apache Parquet dan Teori Dremel</h4>
+        <p>Apache Parquet adalah implementasi open-source dari format penyimpanan yang dijelaskan dalam <em>paper</em>
+            Google Dremel (2010). Parquet menggunakan model hibrida yang cerdas untuk menyeimbangkan efisiensi kolom dan
+            kebutuhan pemrosesan data bersarang (nested data).</p>
+
+        <div class="theory-box">
+            <h4>Anatomi Internal File Parquet</h4>
+            <p>Parquet tidak menyimpan seluruh kolom dalam satu file raksasa (karena akan sulit dipartisi). Ia membagi
+                data secara horizontal dan vertikal:</p>
+            <ol>
+                <li><strong>Row Group:</strong> Pemecahan horizontal data logis (misal: setiap 10.000 baris atau 128MB
+                    data). Ini adalah unit paralelisasi untuk MapReduce/Spark.</li>
+                <li><strong>Column Chunk:</strong> Di dalam satu Row Group, data disimpan per kolom. Ini memungkinkan
+                    pembacaan kolom selektif.</li>
+                <li><strong>Page:</strong> Unit terkecil dalam Column Chunk (biasanya 8KB - 1MB). Kompresi dan encoding
+                    diterapkan pada level Page. Header Page menyimpan statistik (Min/Max/Null Count) yang krusial untuk
+                    optimasi <em>Predicate Pushdown</em>.</li>
+            </ol>
+            <p><strong>Algoritma Repetition & Definition Levels:</strong> Untuk menangani data bersarang (JSON/XML)
+                dalam format kolom rata, Parquet menggunakan algoritma Dremel yang menyimpan tingkat kedalaman
+                (Definition Level) dan pengulangan (Repetition Level) untuk setiap nilai, memungkinkan rekonstruksi
+                struktur pohon tanpa pembacaan yang mahal.</p>
+        </div>
+    </div>
+
+    <!-- MODUL 3: PART 2 (TEORI KOMPRESI) -->
+    <div class="page" id="modul3_part2">
+        <h3>Bagian 2: Teori Kompresi dan Encoding Informasi</h3>
+
+        <p>Dalam Big Data, kompresi bukan hanya tentang menghemat ruang disk, tetapi lebih penting lagi tentang
+            <strong>meningkatkan throughput I/O</strong>. Jika CPU dapat mendekornpresi data lebih cepat daripada
+            kecepatan disk membaca data mentah, maka kompresi akan mempercepat waktu eksekusi query secara keseluruhan.
+        </p>
+
+        <h4>3.3. Teknik Encoding Spesifik (Lightweight Compression)</h4>
+        <p>Parquet menerapkan teknik <em>encoding</em> sebelum data dikompresi dengan algoritma umum (seperti
+            Snappy/Gzip). Encoding ini mengeksploitasi pola data:</p>
+
+        <ul>
+            <li><strong>Dictionary Encoding:</strong>
+                <br>Sangat efektif untuk data dengan kardinalitas rendah (sedikit variasi nilai). Misal, kolom "Negara"
+                dengan 1 Miliar baris tapi hanya 200 nama negara unik.
+                <br><em>Mekanisme:</em> Nilai string diganti dengan integer ID kecil (bit-packed). Kamus pemetaan (ID ->
+                String) disimpan di awal file. Ini memungkinkan operasi filter <code>WHERE negara='Indonesia'</code>
+                dilakukan langsung pada integer ID, yang jauh lebih cepat daripada membandingkan string.
+            </li>
+            <li><strong>Run-Length Encoding (RLE):</strong>
+                <br>Efektif untuk data yang berulang secara berurutan.
+                <br><em>Contoh:</em> Data <code>[A, A, A, A, B, B]</code> disimpan sebagai
+                <code>[(A, 4), (B, 2)]</code>.
+                <br><em>Bit-Packing:</em> Menggabungkan beberapa integer kecil ke dalam satu byte untuk menghemat ruang
+                (misal: menyimpan 8 boolean dalam 1 byte).
+            </li>
+            <li><strong>Delta Encoding:</strong>
+                <br>Efektif untuk data numerik yang berurutan atau time-series.
+                <br><em>Mekanisme:</em> Menyimpan selisih (delta) antar nilai, bukan nilai absolut.
+                <br><em>Contoh:</em> Timestamp <code>[1600, 1601, 1605, 1610]</code> disimpan sebagai blok awal
+                <code>1600</code> dan delta <code>[1, 4, 5]</code>. Angka kecil ini memerlukan bit lebih sedikit.
+            </li>
+        </ul>
+
+        <h4>3.4. Algoritma Kompresi Blok (Heavyweight Compression)</h4>
+        <p>Setelah encoding, blok data dikompresi menggunakan algoritma umum:</p>
+        <table>
+            <tr>
+                <th>Codec</th>
+                <th>Karakteristik</th>
+                <th>Penggunaan Ideal</th>
+            </tr>
+            <tr>
+                <td><strong>Snappy</strong></td>
+                <td>Kecepatan dekompresi sangat tinggi, rasio kompresi rendah.</td>
+                <td>Data panas (Hot Data), query interaktif, default Parquet.</td>
+            </tr>
+            <tr>
+                <td><strong>Gzip</strong></td>
+                <td>Rasio kompresi tinggi, dekompresi lambat (CPU intensive). Tidak <em>splittable</em> dalam format
+                    teks, tapi oke di Parquet/ORC.</td>
+                <td>Data dingin (Cold Data/Archival), penyimpanan jangka panjang.</td>
+            </tr>
+            <tr>
+                <td><strong>Zstd (Zstandard)</strong></td>
+                <td>Keseimbangan terbaik antara rasio Gzip dan kecepatan Snappy.</td>
+                <td>Standar modern untuk Data Lakehouse berkinerja tinggi.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- MODUL 3: PART 3 (IMPLEMENTASI) -->
+    <div class="page" id="modul3_part3">
+        <h3>Bagian 3: Implementasi Benchmarking dan Analisis Kinerja</h3>
+
+        <p>Pada sesi ini, kita akan melakukan eksperimen empiris untuk membuktikan teori di atas. Kita akan
+            membandingkan kinerja penulisan, ukuran penyimpanan, dan kinerja pembacaan antara format CSV (Row) dan
+            Parquet (Columnar).</p>
+
+        <h4>3.5. Kode Simulasi Benchmarking</h4>
+        <pre>
+import os
+import time
+from pyspark.sql.functions import rand, lit, col
+
+# --- 1. PEMBANGKITAN DATASET MASIF ---
+# Kita membuat dataset dengan karakteristik campuran untuk menguji encoding
+# - low_card: Kardinalitas rendah (cocok untuk Dictionary Encoding)
+# - high_card: Kardinalitas tinggi (sulit dikompresi)
+# - text_filler: Teks panjang (untuk menguji overhead I/O)
+print("Generating 5 Million Rows Dataset...")
+df_storage = spark.range(0, 5000000)\
+    .withColumn("low_card", (rand() * 5).cast("int"))\
+    .withColumn("high_card", (rand() * 1000000).cast("int"))\
+    .withColumn("text_filler", lit("Lorem ipsum dolor sit amet " * 5))
+
+# Memaksa evaluasi agar data siap di memori (cache) untuk fairness
+df_storage.cache()
+df_storage.count()
+
+# --- 2. BENCHMARK PENULISAN (WRITE) ---
+# Case A: CSV (Row-based, Text)
+print("\n--- BENCHMARK WRITE CSV ---")
+start = time.time()
+df_storage.write.mode("overwrite").option("header", "true").csv("/content/bench_csv")
+time_csv = time.time() - start
+print(f"Waktu Tulis CSV: {time_csv:.4f} detik")
+
+# Case B: Parquet (Columnar, Snappy)
+print("\n--- BENCHMARK WRITE PARQUET ---")
+start = time.time()
+df_storage.write.mode("overwrite").parquet("/content/bench_parquet")
+time_pq = time.time() - start
+print(f"Waktu Tulis Parquet: {time_pq:.4f} detik")
+
+# --- 3. BENCHMARK UKURAN FILE (STORAGE) ---
+def get_dir_size(path):
+    total = 0
+    for dirpath, _, filenames in os.walk(path):
+        for f in filenames:
+            fp = os.path.join(dirpath, f)
+            total += os.path.getsize(fp)
+    return total / (1024 * 1024) # MB
+
+size_csv = get_dir_size("/content/bench_csv")
+size_pq = get_dir_size("/content/bench_parquet")
+
+print(f"\n--- ANALISIS UKURAN ---")
+print(f"Ukuran CSV     : {size_csv:.2f} MB")
+print(f"Ukuran Parquet : {size_pq:.2f} MB")
+print(f"Efisiensi Ruang: {size_csv/size_pq:.2f}x lipat")
+
+# --- 4. BENCHMARK PEMBACAAN (READ & PROJECTION) ---
+# Skenario: Membaca hanya 1 kolom ('low_card') dan melakukan filter
+print("\n--- BENCHMARK READ (Projection Pushdown) ---")
+
+# CSV Read: Harus membaca seluruh baris teks, parsing, lalu ambil kolom
+start = time.time()
+spark.read.csv("/content/bench_csv", header=True)\
+    .filter("low_card = 1").count()
+print(f"Waktu Baca CSV: {time.time() - start:.4f} detik")
+
+# Parquet Read: Hanya membaca kolom 'low_card', skip kolom teks panjang
+start = time.time()
+spark.read.parquet("/content/bench_parquet")\
+    .filter("low_card = 1").count()
+print(f"Waktu Baca Parquet: {time.time() - start:.4f} detik")
+        </pre>
+    </div>
+
+    <!-- MODUL 3: PART 4 (OPTIMASI LAYOUT) -->
+    <div class="page" id="modul3_part4">
+        <h3>Bagian 4: Strategi Tata Letak Data (Physical Layout Optimization)</h3>
+
+        <h4>3.6. Partitioning (Partisi Direktori)</h4>
+        <p>Partitioning adalah teknik membagi data tabel logis ke dalam struktur direktori fisik hierarkis. Misalnya,
+            tabel log transaksi dipartisi berdasarkan <code>tahun</code> dan <code>bulan</code>. Struktur folder akan
+            terlihat seperti <code>/data/tahun=2023/bulan=01/part-0001.parquet</code>.</p>
+
+        <p><strong>Keuntungan: Partition Pruning</strong>. Saat query dijalankan dengan filter
+            <code>WHERE tahun=2023 AND bulan=01</code>, Spark Catalyst Optimizer akan mendeteksi partisi ini dan
+            <strong>hanya</strong> membaca file di folder tersebut. Ia mengabaikan folder bulan/tahun lain sepenuhnya.
+            Ini mengurangi I/O secara eksponensial.
+        </p>
+
+        <p><strong>Risiko: Over-Partitioning.</strong> Jika kita mempartisi berdasarkan kolom dengan kardinalitas tinggi
+            (misal: <code>user_id</code>), kita akan menghasilkan jutaan folder dengan file-file sangat kecil (KB). Ini
+            menyebabkan "Small Files Problem" yang membebani metadata NameNode HDFS dan memperlambat listing file di S3.
+        </p>
+
+        <h4>3.7. Bucketing (Clustering)</h4>
+        <p>Bucketing adalah teknik membagi data di dalam satu partisi (atau tabel tanpa partisi) ke dalam jumlah file
+            yang tetap (fixed number of buckets) berdasarkan nilai hash dari kolom tertentu.</p>
+
+        <p><strong>Keuntungan Utama: SMB Join (Sort-Merge Bucket Join).</strong> Jika dua tabel besar (misal: Transaksi
+            dan User) di-bucket menggunakan kolom yang sama (<code>user_id</code>) dengan jumlah bucket yang sama (atau
+            kelipatannya), maka data dengan user_id yang sama dijamin berada di bucket yang berkorespondensi. Spark
+            dapat melakukan JOIN tanpa melakukan <strong>Shuffle</strong> (pertukaran data antar node), karena data
+            sudah teralokasi di tempat yang benar (pre-shuffled).</p>
+
+        <p><strong>Implementasi Partitioning & Bucketing:</strong></p>
+        <pre>
+# --- SIMULASI PARTITIONING ---
+print("\n--- BENCHMARK PARTITIONING ---")
+
+# Simpan dengan Partisi berdasarkan 'low_card' (kardinalitas 5, aman)
+df_storage.write.mode("overwrite").partitionBy("low_card").parquet("/content/bench_partitioned")
+
+# Query dengan Filter Partisi (Spark hanya baca folder yang relevan)
+start = time.time()
+spark.read.parquet("/content/bench_partitioned").filter("low_card = 1").count()
+print(f"Waktu Baca dengan Partition Pruning: {time.time() - start:.4f} detik")
+
+# Bandingkan dengan membaca file non-partisi dengan filter yang sama
+start = time.time()
+spark.read.parquet("/content/bench_parquet").filter("low_card = 1").count()
+print(f"Waktu Baca Tanpa Pruning (Full Scan): {time.time() - start:.4f} detik")
+
+# --- SIMULASI BUCKETING (Konseptual di Colab Lokal) ---
+# Bucketing memerlukan metastore (Hive) yang persisten untuk mencatat metadata bucket
+# Berikut adalah sintaks untuk referensi implementasi produksi:
+"""
+df_storage.write\
+    .bucketBy(16, "id")\
+    .sortBy("id")\
+    .saveAsTable("bucketed_table")
+"""
+        </pre>
+
+        <h4>3.8. Z-Ordering (Space Filling Curves)</h4>
+        <p>Teknik optimasi modern (dipopulerkan oleh Delta Lake). Z-Ordering memetakan data multidimensi ke dalam satu
+            dimensi sedemikian rupa sehingga data yang berdekatan secara logis juga berdekatan secara fisik di dalam
+            file.</p>
+        <p>Ini memungkinkan <em>Data Skipping</em> yang sangat efisien pada banyak kolom filter sekaligus, mengatasi
+            kelemahan Partitioning yang hanya efisien untuk filter pada kolom partisi hierarkis.</p>
+
+        <div class="task-box">
+            <h4>Tugas Analisis dan Laporan Modul 3</h4>
+            <ol>
+                <li><strong>Analisis Kinerja:</strong> Berdasarkan hasil benchmark, hitung berapa persen penghematan
+                    waktu dan ruang yang didapat dari format Parquet dibandingkan CSV. Mengapa penghematan waktu baca
+                    lebih signifikan pada query yang hanya memilih 1 kolom (<em>projection</em>) dibandingkan query
+                    <code>SELECT *</code>?
+                </li>
+                <li><strong>Desain Arsitektur:</strong> Anda memiliki dataset log server sebesar 1 PB yang berisi kolom:
+                    <code>timestamp</code>, <code>ip_address</code>, <code>url</code>, <code>country</code>,
+                    <code>user_id</code>. Analis sering melakukan query berdasarkan rentang waktu harian dan negara.
+                    Rancang strategi partisi yang optimal. Apakah mempartisi berdasarkan <code>ip_address</code> adalah
+                    ide yang baik? Jelaskan alasannya.
+                </li>
+                <li><strong>Teori Kompresi:</strong> Jelaskan mengapa teknik <em>Run-Length Encoding</em> (RLE) sangat
+                    efektif untuk kolom yang telah diurutkan (sorted), tetapi buruk untuk data acak?</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- MODUL 4: DATA INGESTION (PART 1) -->
+    <div class="page" id="modul4">
+        <h2>Modul 4: Data Ingestion (Batch & Stream)</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Ingestion</h3>
+
+        <h4>4.1. Pola dan Tantangan Ingestion</h4>
+        <p>Data Ingestion adalah proses transportasi data dari berbagai sumber (RDBMS, SaaS, IoT, Log) ke media
+            penyimpanan atau pemrosesan. Tantangan utamanya bukan sekadar memindahkan byte, melainkan menjamin:</p>
+        <ul>
+            <li><strong>Reliability:</strong> Data tidak boleh hilang saat jaringan putus (<em>At-least-once
+                    delivery</em>).</li>
+            <li><strong>Latency:</strong> Seberapa cepat data tersedia untuk dikueri.</li>
+            <li><strong>Decoupling:</strong> Produsen data tidak boleh terbebani oleh lambatnya Konsumen. Ini
+                diselesaikan dengan <em>Message Broker</em> seperti Apache Kafka.</li>
+        </ul>
+
+        <h4>4.2. Schema Drift dan Evolusi</h4>
+        <p>Dalam dunia nyata, struktur data sumber berubah (kolom bertambah, tipe data berubah). Pipeline data yang kaku
+            akan gagal (crash) saat terjadi <em>Schema Drift</em>.
+            <br>Solusi arsitekturalnya adalah:
+        </p>
+        <ul>
+            <li><strong>Schema Enforcement (Write-side):</strong> Menolak data yang tidak sesuai skema (Strict).</li>
+            <li><strong>Schema Evolution (Read-side):</strong> Secara otomatis beradaptasi dengan kolom baru (Flexible,
+                misal Delta Lake).</li>
+        </ul>
+
+        <h3>Bagian 2: Implementasi Batch Ingestion Robust</h3>
+        <p>Kita akan mensimulasikan ingestion data CSV yang "kotor" dan menerapkan validasi skema yang ketat untuk
+            mencegah polusi data di Data Lake.</p>
+
+        <pre>
+# 1. Membuat Sampel Data Kotor (Dirty Data)
+# Baris 2: 'duapuluh' bukan integer
+# Baris 3: Kolom gaji hilang
+dirty_csv_content = """id,nama,umur,gaji
+1,Andi,25,5000000
+2,Budi,duapuluh,6000000
+3,Citra,30,
+4,Dedi,28,7000000"""
+
+with open("dirty_data.csv", "w") as f:
+    f.write(dirty_csv_content)
+
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType, DoubleType
+
+# 2. Definisi Skema Target (Ekspektasi)
+target_schema = StructType([
+    StructField("id", IntegerType(), True),
+    StructField("nama", StringType(), True),
+    StructField("umur", IntegerType(), True),
+    StructField("gaji", DoubleType(), True)
+])
+
+# 3. Mode Ingestion: PERMISSIVE (Default)
+# Mengisi nilai NULL pada kolom yang error, tetap memuat baris
+print("--- MODE PERMISSIVE ---")
+df_perm = spark.read.schema(target_schema)\
+    .option("header", "true")\
+    .option("mode", "PERMISSIVE")\
+    .csv("dirty_data.csv")
+df_perm.show()
+
+# 4. Mode Ingestion: DROPMALFORMED
+# Membuang seluruh baris yang mengandung error
+print("--- MODE DROPMALFORMED ---")
+df_drop = spark.read.schema(target_schema)\
+    .option("header", "true")\
+    .option("mode", "DROPMALFORMED")\
+    .csv("dirty_data.csv")
+df_drop.show()
+
+# 5. Mode Ingestion: FAILFAST
+# Langsung menghentikan proses (Exception) jika ada 1 error
+print("--- MODE FAILFAST (Akan Error) ---")
+try:
+    df_fail = spark.read.schema(target_schema)\
+        .option("header", "true")\
+        .option("mode", "FAILFAST")\
+        .csv("dirty_data.csv")
+    df_fail.show()
+except Exception as e:
+    print(f"Ingestion Gagal: {e}")
+        </pre>
+    </div>
+
+    <!-- MODUL 4: PART 2 (STREAMING) -->
+    <div class="page" id="modul4_part2">
+        <h3>Bagian 3: Implementasi Streaming Ingestion</h3>
+
+        <h4>4.3. Simulasi IoT Stream (Rate Source)</h4>
+        <p>Untuk mensimulasikan aliran data sensor tanpa Kafka, kita menggunakan sumber <code>rate</code> bawaan Spark.
+            Sumber ini menghasilkan data <em>timestamp</em> dan <em>value</em> (counter) secara kontinu.</p>
+
+        <pre>
+# Inisialisasi Stream (5 event per detik)
+# load() tidak memicu eksekusi, hanya mendefinisikan topologi stream
+streaming_df = spark.readStream \
+    .format("rate") \
+    .option("rowsPerSecond", 5) \
+    .load()
+
+# Transformasi ETL on-the-fly
+# Menambah kolom 'sensor_id' secara acak dan 'suhu'
+from pyspark.sql.functions import concat, lit, rand, floor
+
+stream_etl = streaming_df \
+    .withColumn("sensor_id", concat(lit("SENSOR_"), floor(rand() * 3))) \
+    .withColumn("suhu", 20 + (rand() * 15)) \
+    .select("timestamp", "sensor_id", "suhu")
+
+# Sink (Tujuan): Memory
+# Menulis hasil stream ke tabel memori untuk di-query. 
+# HATI-HATI: Jangan gunakan Memory Sink di produksi (bisa OOM).
+query = stream_etl.writeStream \
+    .format("memory") \
+    .queryName("iot_live_table") \
+    .start()
+
+print("Streaming berjalan... (Menunggu 10 detik)")
+import time
+time.sleep(10)
+
+# Query Snapshot saat ini dari stream
+print("--- Snapshot Data Stream ---")
+spark.sql("SELECT sensor_id, count(*) as jumlah_data, avg(suhu) as rata_suhu FROM iot_live_table GROUP BY sensor_id").show()
+
+query.stop()
+print("Streaming dihentikan.")
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis Modul 4</h4>
+            <ol>
+                <li><strong>Analisis Mode Baca:</strong> Dalam skenario perbankan yang ketat, mode pembacaan mana
+                    (<em>Permissive, DropMalformed, FailFast</em>) yang paling tepat digunakan untuk file transaksi
+                    harian? Jelaskan alasannya terkait integritas data.</li>
+                <li><strong>Backpressure:</strong> Jika Anda mengatur <code>rowsPerSecond=10000</code> tetapi kapasitas
+                    pemrosesan Spark di Colab hanya mampu 5000 baris/detik, apa yang akan terjadi pada memori? Bagaimana
+                    mekanisme <em>Backpressure</em> di Spark Streaming menangani ini?</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- MODUL 5: PART 1 (TEORI OPTIMASI) -->
+    <div class="page" id="modul5">
+        <h2>Modul 5: Pemrosesan Batch Lanjut (Advanced ETL)</h2>
+
+        <h3>Bagian 1: Di Balik Layar Spark SQL (Catalyst Optimizer)</h3>
+        <p>Keunggulan utama Spark SQL dibanding RDD API manual adalah <strong>Catalyst Optimizer</strong>. Catalyst
+            secara otomatis mengoptimalkan query logis menjadi rencana fisik yang efisien. Tahapannya:</p>
+        <ol>
+            <li><strong>Analysis:</strong> Memastikan nama kolom dan tabel valid (menggunakan Katalog).</li>
+            <li><strong>Logical Optimization:</strong> Menerapkan aturan standar seperti:
+                <ul>
+                    <li><em>Predicate Pushdown:</em> Mendorong filter <code>WHERE</code> sedekat mungkin ke sumber data.
+                    </li>
+                    <li><em>Column Pruning:</em> Hanya membaca kolom yang dibutuhkan di <code>SELECT</code>.</li>
+                </ul>
+            </li>
+            <li><strong>Physical Planning:</strong> Memilih strategi join (Broadcast vs SortMerge) berdasarkan ukuran
+                data.</li>
+            <li><strong>Code Generation:</strong> Menghasilkan <em>bytecode</em> Java yang teroptimasi (Tungsten) untuk
+                menghilangkan overhead objek.</li>
+        </ol>
+
+        <h3>Bagian 2: Implementasi dan Benchmarking UDF</h3>
+        <p>User Defined Functions (UDF) Python sering menjadi "kotak hitam" bagi Catalyst dan menyebabkan degradasi
+            performa karena serialisasi data (Pickling) antara JVM dan Python Worker.</p>
+
+        <pre>
+from pyspark.sql.functions import udf, when, col
+from pyspark.sql.types import StringType
+import time
+
+# Dataset Benchmark (5 Juta Baris)
+df_bench = spark.range(0, 5000000).withColumn("nilai", (rand() * 100).cast("int"))
+
+# --- KASUS 1: Python UDF (Lambat) ---
+def kategori_py(val):
+    if val > 80: return "A"
+    elif val > 50: return "B"
+    else: return "C"
+
+udf_kat = udf(kategori_py, StringType())
+
+start = time.time()
+# Action count() memicu eksekusi seluruh pipeline
+df_bench.withColumn("kategori", udf_kat("nilai")).write.format("noop").mode("overwrite").save() 
+# format("noop") adalah sink kosong untuk benchmark murni komputasi
+print(f"Waktu Python UDF: {time.time() - start:.2f} detik")
+
+# --- KASUS 2: Spark Native Expression (Cepat) ---
+start = time.time()
+df_bench.withColumn("kategori", 
+    when(col("nilai") > 80, "A")
+    .when(col("nilai") > 50, "B")
+    .otherwise("C")
+).write.format("noop").mode("overwrite").save()
+print(f"Waktu Native Expr: {time.time() - start:.2f} detik")
+        </pre>
+    </div>
+
+    <!-- MODUL 5: PART 2 (OPTIMASI JOIN) -->
+    <div class="page" id="modul5_part2">
+        <h3>Bagian 3: Strategi Join Terdistribusi</h3>
+
+        <h4>5.1. Sort-Merge Join vs Broadcast Join</h4>
+        <p>Join adalah operasi termahal dalam klaster karena melibatkan <strong>Shuffle</strong> (perpindahan data antar
+            node).</p>
+        <ul>
+            <li><strong>Sort-Merge Join (Standard):</strong> Kedua tabel di-shuffle berdasarkan <em>join key</em>,
+                diurutkan, lalu digabung. Mahal di I/O jaringan.</li>
+            <li><strong>Broadcast Join (Optimasi):</strong> Jika satu tabel kecil (dimensi), tabel tersebut dikirim
+                (broadcast) ke semua node. Tabel besar tidak perlu bergerak. Sangat cepat.</li>
+        </ul>
+
+        <h4>5.2. Simulasi dan Analisis Query Plan</h4>
+        <pre>
+from pyspark.sql.functions import broadcast
+
+# Tabel Besar (Fakta): 1 Juta Transaksi
+df_fact = spark.range(0, 1000000).withColumnRenamed("id", "trx_id")\
+    .withColumn("store_id", (rand() * 100).cast("int"))
+
+# Tabel Kecil (Dimensi): 100 Toko
+df_dim = spark.range(0, 100).withColumnRenamed("id", "store_id")\
+    .withColumn("city", lit("Jakarta"))
+
+# A. Sort Merge Join (Default untuk tabel besar)
+# Matikan auto-broadcast untuk memaksa sort merge (hanya untuk demo)
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1) 
+
+print("--- PLAN: Sort Merge Join ---")
+join_sm = df_fact.join(df_dim, "store_id")
+join_sm.explain() # Perhatikan keyword 'SortMergeJoin' dan 'Exchange'
+
+start = time.time()
+join_sm.count()
+print(f"Waktu SortMerge: {time.time() - start:.2f} s")
+
+# B. Broadcast Join (Optimized)
+# Kembalikan config atau gunakan hint broadcast
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", 10485760) # 10MB
+
+print("\n--- PLAN: Broadcast Join ---")
+join_bc = df_fact.join(broadcast(df_dim), "store_id")
+join_bc.explain() # Perhatikan 'BroadcastHashJoin' dan 'BroadcastExchange'
+
+start = time.time()
+join_bc.count()
+print(f"Waktu Broadcast: {time.time() - start:.2f} s")
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis Modul 5</h4>
+            <ol>
+                <li>Dalam output <code>explain()</code> untuk Broadcast Join, Anda akan melihat bahwa tabel fakta
+                    (besar) tidak mengalami <em>Exchange</em> (Shuffle). Jelaskan mengapa hal ini bisa menghemat waktu
+                    secara signifikan dibandingkan Sort-Merge Join.</li>
+                <li>Mengapa kita tidak selalu menggunakan Broadcast Join untuk semua operasi? Apa risiko yang terjadi
+                    pada memori driver/executor jika tabel yang di-broadcast ternyata berukuran 5GB?</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- MODUL 6: STREAM PROCESSING (PART 1) -->
+    <div class="page" id="modul6">
+        <h2>Modul 6: Pemrosesan Stream Real-time</h2>
+
+        <h3>Bagian 1: Konsep Lanjut - Event Time & Watermarking</h3>
+        <p>Dalam sistem terdistribusi, data sering datang tidak berurutan (<em>Out-of-Order</em>). Misalnya, data
+            kejadian jam 10:00 baru tiba di server jam 10:05 karena lag jaringan.</p>
+        <ul>
+            <li><strong>Event Time:</strong> Waktu kejadian sebenarnya di perangkat.</li>
+            <li><strong>Processing Time:</strong> Waktu data diproses server.</li>
+            <li><strong>Watermark:</strong> Batas toleransi keterlambatan. "Sistem akan menunggu data terlambat hingga X
+                menit, setelah itu jendela waktu ditutup."</li>
+        </ul>
+
+        <h3>Bagian 2: Implementasi Windowing Aggregation</h3>
+        <p>Kita akan mensimulasikan data transaksi yang masuk dengan timestamp tertentu, dan menghitung total transaksi
+            per jendela waktu 10 detik.</p>
+
+        <pre>
+# Trik untuk simulasi input stream manual di Colab:
+# Kita membuat folder input dan menulis file CSV ke dalamnya secara bertahap.
+import shutil
+
+input_dir = "/content/stream_input"
+if os.path.exists(input_dir): shutil.rmtree(input_dir)
+os.makedirs(input_dir)
+
+# Definisi Schema
+user_schema = StructType([
+    StructField("timestamp", StringType(), True),
+    StructField("user", StringType(), True),
+    StructField("action", StringType(), True)
+])
+
+# Membaca Stream dari Folder
+# Trigger once: memproses file baru lalu berhenti (mirip batch, untuk demo)
+sdf = spark.readStream.schema(user_schema).csv(input_dir)
+
+from pyspark.sql.functions import window, to_timestamp
+
+# Konversi string ke timestamp
+sdf_ts = sdf.withColumn("event_time", to_timestamp("timestamp"))
+
+# Windowing 10 menit, Watermark 5 menit
+# Artinya: Data yang lebih tua dari (Max Event Time - 5 menit) diabaikan
+windowed_counts = sdf_ts \
+    .withWatermark("event_time", "5 minutes") \
+    .groupBy(
+        window(col("event_time"), "10 minutes"),
+        col("action")
+    ).count()
+
+# Output ke Memory
+query = windowed_counts.writeStream \
+    .format("memory") \
+    .queryName("window_aggs") \
+    .outputMode("update") \
+    .start()
+        </pre>
+    </div>
+
+    <!-- MODUL 6: PART 2 (SIMULASI ALIRAN DATA) -->
+    <div class="page" id="modul6_part2">
+        <h3>Bagian 3: Simulasi Aliran Data dan Late Arrival</h3>
+        <p>Kita akan menulis file CSV ke folder input secara bertahap untuk melihat bagaimana Spark menangani window dan
+            late data.</p>
+
+        <pre>
+# Batch 1: Data Tepat Waktu (Jam 12:00 - 12:05)
+print("--- Mengirim Batch 1 ---")
+with open(f"{input_dir}/file1.csv", "w") as f:
+    f.write("2023-01-01 12:00:00,UserA,Click\n")
+    f.write("2023-01-01 12:04:00,UserB,Click\n")
+
+time.sleep(3) # Tunggu processing
+spark.sql("SELECT * FROM window_aggs ORDER BY window").show(truncate=False)
+
+# Batch 2: Data Baru (12:15) + Data Terlambat (12:02)
+# Watermark akan bergerak maju mengikuti data 12:15.
+# Data 12:02 masih diterima karena selisihnya (13 menit) mungkin masih dalam toleransi atau belum difinalisasi.
+print("\n--- Mengirim Batch 2 (Data Campuran) ---")
+with open(f"{input_dir}/file2.csv", "w") as f:
+    f.write("2023-01-01 12:15:00,UserC,View\n") # Memajukan max time ke 12:15
+    f.write("2023-01-01 12:02:00,UserA,View\n") # Late data (masuk window 12:00-12:10)
+
+time.sleep(3)
+spark.sql("SELECT * FROM window_aggs ORDER BY window").show(truncate=False)
+
+# Hentikan Stream
+query.stop()
+        </pre>
+
+        <div class="theory-box">
+            <h4>Analisis State Store</h4>
+            <p>Operasi windowing adalah <em>Stateful Operation</em>. Spark perlu menyimpan data sementara (State) di
+                memori untuk setiap jendela waktu yang aktif. Watermark berfungsi untuk membersihkan state lama. Tanpa
+                watermark, memori akan penuh seiring berjalannya waktu.</p>
+        </div>
+
+        <div class="task-box">
+            <h4>Tugas Analisis Modul 6</h4>
+            <ol>
+                <li>Dalam simulasi di atas, jika kita mengirimkan data dengan timestamp <code>11:00:00</code> pada Batch
+                    ke-3 (sementara max event time sudah <code>12:15:00</code> dan watermark 5 menit), apakah data
+                    tersebut akan dihitung? Jelaskan alasannya.</li>
+                <li>Apa perbedaan <em>Update Mode</em> dan <em>Complete Mode</em> pada output sink? Manakah yang lebih
+                    cocok untuk dashboard real-time yang memantau trafik per jam?</li>
+            </ol>
+        </div>
+    </div>
+    <!-- ... (Modul 1-6 remains unchanged) ... -->
+
+    <!-- MODUL 7: ANALITIK DESKRIPTIF & DIAGNOSTIK -->
+    <div class="page" id="modul7">
+        <h2>Modul 7: Analitik Deskriptif & Diagnostik (Advanced SQL)</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Analitik Data</h3>
+
+        <h4>7.1. Taksonomi Analitik (Gartner Analytic Ascendancy Model)</h4>
+        <p>Analitik data bukanlah proses tunggal, melainkan spektrum aktivitas yang berkembang dari pemahaman masa lalu
+            menuju prediksi masa depan. Gartner membagi analitik menjadi empat tahap:</p>
+        <ol>
+            <li><strong>Analitik Deskriptif (Descriptive):</strong> Menjawab pertanyaan <em>"Apa yang terjadi?"</em>.
+                Fokus pada ringkasan sejarah data (Historical Data). Metode utama: Agregasi, Reporting, Dashboarding.
+            </li>
+            <li><strong>Analitik Diagnostik (Diagnostic):</strong> Menjawab pertanyaan <em>"Mengapa itu terjadi?"</em>.
+                Fokus pada penemuan akar masalah (Root Cause Analysis). Metode utama: Drill-down, Data Mining, Korelasi.
+            </li>
+            <li><strong>Analitik Prediktif (Predictive):</strong> Menjawab <em>"Apa yang akan terjadi?"</em>.</li>
+            <li><strong>Analitik Preskriptif (Prescriptive):</strong> Menjawab <em>"Apa yang harus kita lakukan?"</em>.
+            </li>
+        </ol>
+        <p>Dalam modul ini, kita fokus pada dua tahap pertama yang merupakan fondasi dari <em>Business Intelligence</em>
+            (BI). Kita akan menggunakan SQL (Structured Query Language) tingkat lanjut sebagai alat bedah data utama.
+        </p>
+
+        <div class="theory-box">
+            <h4>SQL-on-Hadoop: Evolusi Query Engine</h4>
+            <p>Pada awalnya, analisis data di Hadoop memerlukan penulisan kode MapReduce (Java) yang kompleks. Munculnya
+                <strong>Apache Hive</strong> mengubah ini dengan menyediakan antarmuka SQL (HQL) yang diterjemahkan
+                menjadi MapReduce. Kemudian, engine MPP (Massively Parallel Processing) seperti <strong>Apache
+                    Impala</strong> dan <strong>Presto/Trino</strong> lahir untuk memberikan latensi kueri interaktif
+                dengan memproses data langsung di memori, melewati lambatnya MapReduce.
+            </p>
+        </div>
+
+        <h3>Bagian 2: Implementasi Analitik Deskriptif (Summarization)</h3>
+
+        <h4>7.2. Persiapan Data Time-Series</h4>
+        <p>Kita akan menggunakan dataset penjualan harian untuk melakukan analisis tren. Dataset ini memiliki dimensi
+            Waktu (Tanggal) dan Kategori (Produk).</p>
+        <pre>
+# Persiapan Data Dummy Penjualan
+data_sales = [
+    ("2023-01-01", "Elektronik", 1000000), ("2023-01-02", "Elektronik", 1500000),
+    ("2023-01-03", "Elektronik", 1200000), ("2023-01-04", "Elektronik", 1100000),
+    ("2023-01-05", "Elektronik", 1600000), ("2023-01-06", "Elektronik", 1800000),
+    ("2023-01-01", "Fesen", 500000), ("2023-01-02", "Fesen", 600000),
+    ("2023-01-03", "Fesen", 550000), ("2023-01-04", "Fesen", 580000)
+]
+df_sales = spark.createDataFrame(data_sales, ["tanggal", "kategori", "pendapatan"])
+df_sales.createOrReplaceTempView("sales_data")
+
+# Konversi String ke Date agar bisa diurutkan dengan benar
+spark.sql("SELECT * FROM sales_data").show(3)
+        </pre>
+
+        <h4>7.3. Window Functions: Analisis Tren dan Pertumbuhan</h4>
+        <p>SQL standar (<code>GROUP BY</code>) mengelompokkan baris menjadi satu hasil agregat. Namun, untuk melihat
+            tren (kenaikan/penurunan), kita perlu membandingkan baris saat ini dengan baris sebelumnya tanpa
+            menghilangkan detail baris tersebut. Inilah fungsi <strong>Window Functions</strong>.</p>
+
+        <p>Kita akan menghitung dua metrik penting:</p>
+        <ul>
+            <li><strong>Growth (Pertumbuhan):</strong> Selisih pendapatan hari ini vs kemarin.</li>
+            <li><strong>Moving Average (Rata-rata Bergerak):</strong> Tren halus untuk menghilangkan fluktuasi harian.
+            </li>
+        </ul>
+
+        <pre>
+spark.sql("""
+    SELECT 
+        kategori, 
+        tanggal, 
+        pendapatan,
+        
+        -- 1. Mengambil nilai baris sebelumnya (LAG)
+        LAG(pendapatan, 1, 0) OVER (PARTITION BY kategori ORDER BY tanggal) as sales_kemarin,
+        
+        -- 2. Menghitung Pertumbuhan Harian (Day-over-Day Growth)
+        (pendapatan - LAG(pendapatan, 1, 0) OVER (PARTITION BY kategori ORDER BY tanggal)) as pertumbuhan_idr,
+        
+        -- 3. Menghitung Persentase Pertumbuhan
+        ROUND(
+            (pendapatan - LAG(pendapatan, 1, 0) OVER (PARTITION BY kategori ORDER BY tanggal)) / 
+            NULLIF(LAG(pendapatan, 1, 0) OVER (PARTITION BY kategori ORDER BY tanggal), 0) * 100, 
+        2) as pertumbuhan_persen,
+        
+        -- 4. Moving Average 3 Hari (Current + 2 Preceding)
+        -- Digunakan untuk melihat tren jangka panjang (Smoothing)
+        AVG(pendapatan) OVER (
+            PARTITION BY kategori 
+            ORDER BY tanggal 
+            ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+        ) as rata_rata_3hari
+        
+    FROM sales_data
+    ORDER BY kategori, tanggal
+""").show()
+        </pre>
+
+        <h3>Bagian 3: Implementasi Analitik Diagnostik (Root Cause Analysis)</h3>
+
+        <h4>7.4. Analisis Kohort (Cohort Analysis)</h4>
+        <p>Analisis Kohort adalah teknik diagnostik yang kuat untuk memahami perilaku pengguna dari waktu ke waktu.
+            Alih-alih melihat semua pengguna sebagai satu kesatuan, kita mengelompokkan mereka berdasarkan karakteristik
+            bersama (biasanya waktu akuisisi) dan melacak metrik mereka.</p>
+        <p><strong>Kasus:</strong> Apakah pengguna yang mendaftar bulan Januari lebih setia (retensi tinggi)
+            dibandingkan pengguna yang mendaftar bulan Februari?</p>
+
+        <pre>
+# Data Aktivitas Login User
+data_login = [
+    ("UserA", "2023-01-01"), ("UserB", "2023-01-05"), ("UserC", "2023-01-10"), # Cohort Jan
+    ("UserA", "2023-02-01"), ("UserB", "2023-02-20"), # Retensi Jan di Feb
+    ("UserD", "2023-02-02"), ("UserE", "2023-02-05"), # Cohort Feb
+    ("UserA", "2023-03-01"), ("UserD", "2023-03-10")  # Retensi Jan & Feb di Mar
+]
+df_login = spark.createDataFrame(data_login, ["user_id", "login_date"])
+df_login.createOrReplaceTempView("user_logins")
+
+# Query Analisis Kohort
+print("--- Tabel Retensi Kohort ---")
+spark.sql("""
+    WITH user_cohort AS (
+        -- Langkah 1: Tentukan Kohort (Bulan Pertama Join)
+        SELECT user_id, MIN(DATE_TRUNC('month', login_date)) as cohort_month
+        FROM user_logins
+        GROUP BY user_id
+    ),
+    user_activities AS (
+        -- Langkah 2: Hitung Selisih Bulan Aktivitas (Month Lag)
+        SELECT 
+            l.user_id,
+            uc.cohort_month,
+            FLOOR(MONTHS_BETWEEN(DATE_TRUNC('month', l.login_date), uc.cohort_month)) as month_number
+        FROM user_logins l
+        JOIN user_cohort uc ON l.user_id = uc.user_id
+    )
+    -- Langkah 3: Pivot Table untuk melihat Retensi
+    SELECT 
+        DATE_FORMAT(cohort_month, 'yyyy-MM') as cohort,
+        COUNT(DISTINCT CASE WHEN month_number = 0 THEN user_id END) as total_users,
+        COUNT(DISTINCT CASE WHEN month_number = 1 THEN user_id END) as month_1,
+        COUNT(DISTINCT CASE WHEN month_number = 2 THEN user_id END) as month_2
+    FROM user_activities
+    GROUP BY cohort_month
+    ORDER BY cohort_month
+""").show()
+        </pre>
+
+        <h4>7.5. Deteksi Anomali dengan Statistik (Z-Score)</h4>
+        <p>Salah satu tugas diagnostik adalah menemukan <em>Outlier</em>. Kita bisa menggunakan metode statistik
+            Z-Score. Z-Score mengukur berapa standar deviasi sebuah titik data berjarak dari rata-rata.</p>
+        <ul>
+            <li><strong>Z > 0:</strong> Data di atas rata-rata.</li>
+            <li><strong>Z < 0:</strong> Data di bawah rata-rata.</li>
+            <li><strong>|Z| > 2:</strong> Indikasi kuat anomali (dalam distribusi normal, hanya 5% data yang berada di
+                luar 2 SD).</li>
+        </ul>
+
+        <pre>
+# Mendeteksi hari dengan penjualan tidak wajar (Anomali)
+spark.sql("""
+    WITH stats AS (
+        -- Hitung Rata-rata dan Standar Deviasi per Kategori
+        SELECT 
+            kategori,
+            AVG(pendapatan) as mean_sales,
+            STDDEV(pendapatan) as sd_sales
+        FROM sales_data
+        GROUP BY kategori
+    )
+    SELECT 
+        s.tanggal, 
+        s.kategori, 
+        s.pendapatan,
+        -- Hitung Z-Score
+        (s.pendapatan - st.mean_sales) / st.sd_sales as z_score,
+        -- Labeling
+        CASE 
+            WHEN (s.pendapatan - st.mean_sales) / st.sd_sales > 1.5 THEN 'Lonjakan Tinggi'
+            WHEN (s.pendapatan - st.mean_sales) / st.sd_sales < -1.5 THEN 'Penurunan Tajam'
+            ELSE 'Normal' 
+        END as status
+    FROM sales_data s
+    JOIN stats st ON s.kategori = st.kategori
+""").show()
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis Modul 7</h4>
+            <ol>
+                <li><strong>Interpretasi Kohort:</strong> Jika hasil analisis kohort menunjukkan bahwa pengguna yang
+                    mendaftar di bulan Februari memiliki retensi bulan ke-1 yang jauh lebih rendah (misal 10%)
+                    dibandingkan kohort Januari (40%), hipotesis diagnostik apa yang bisa Anda ajukan? Faktor apa saja
+                    yang mungkin menyebabkan penurunan kualitas kohort tersebut?</li>
+                <li><strong>Moving Average:</strong> Jelaskan mengapa <em>Moving Average</em> sering digunakan dalam
+                    analisis tren data keuangan atau sensor. Apa dampak mengubah rentang window (misal dari 3 hari
+                    menjadi 30 hari) terhadap sensitivitas deteksi perubahan tren?</li>
+            </ol>
+        </div>
+    </div>
+
+
+    <!-- ... (Konten Modul 1 s.d Modul 7 tetap ada sebelumnya) ... -->
+
+    <!-- MODUL 8: PART 1 (TEORI DASAR & ARSITEKTUR) -->
+    <div class="page" id="modul8">
+        <h2>Modul 8: Machine Learning Skala Besar (Spark MLlib)</h2>
+
+        <h3>Bagian 1: Paradigma Machine Learning Terdistribusi</h3>
+
+        <h4>8.1. Pendahuluan: Mengapa Scikit-Learn Tidak Cukup?</h4>
+        <p>Pustaka tradisional seperti <em>scikit-learn</em> atau <em>pandas</em> bekerja dengan asumsi bahwa seluruh
+            dataset muat dalam memori (RAM) satu mesin (Single Node). Ketika data mencapai skala Terabyte atau Petabyte,
+            pendekatan ini mengalami dua hambatan fatal:</p>
+        <ol>
+            <li><strong>Memory Bottleneck:</strong> Algoritma gagal memuat data (<em>Out of Memory Error</em>).</li>
+            <li><strong>Compute Bottleneck:</strong> Waktu pelatihan (training time) menjadi tidak praktis (bisa memakan
+                waktu minggu atau bulan).</li>
+        </ol>
+        <p>Apache Spark MLlib mengatasi ini dengan paradigma <strong>Data Parallelism</strong>. Dataset dipartisi ke
+            ratusan node. Algoritma pembelajaran mesin (seperti Gradient Descent) ditulis ulang agar dapat menghitung
+            gradien parsial di setiap node secara lokal, kemudian mengagregasi hasilnya (biasanya melalui mekanisme
+            <em>Tree Aggregate</em> atau <em>Parameter Server</em>) untuk memperbarui bobot model global.
+        </p>
+
+        <div class="theory-box">
+            <h4>Konsep: Iterative MapReduce</h4>
+            <p>Algoritma ML sebagian besar bersifat iteratif (berulang). Hadoop MapReduce klasik tidak efisien untuk ML
+                karena setiap iterasi harus menulis hasil ke disk (HDFS). Spark mengoptimalkan ini dengan menyimpan data
+                di memori (<em>Cache/Persist</em>) di antara iterasi, memberikan percepatan hingga 100x dibanding
+                MapReduce untuk algoritma seperti Logistic Regression.</p>
+        </div>
+
+        <h4>8.2. Arsitektur Spark ML (DataFrame API)</h4>
+        <p>Spark MLlib (<code>spark.ml</code>) mengadopsi konsep <strong>Pipeline</strong> yang terinspirasi dari
+            scikit-learn, namun didesain untuk eksekusi terdistribusi asinkron. Komponen utamanya adalah:</p>
+        <ul>
+            <li><strong>DataFrame:</strong> Struktur data utama yang bisa menyimpan teks, vektor fitur, matriks, dan
+                label.</li>
+            <li><strong>Transformer:</strong> Algoritma yang mengubah satu DataFrame menjadi DataFrame lain (misal:
+                normalisasi fitur, tokenisasi teks, atau prediksi model). Mengimplementasikan metode
+                <code>.transform()</code>.
+            </li>
+            <li><strong>Estimator:</strong> Algoritma pembelajaran yang dilatih pada DataFrame untuk menghasilkan Model
+                (Transformer). Mengimplementasikan metode <code>.fit()</code>.</li>
+            <li><strong>Pipeline:</strong> Rangkaian Transformer dan Estimator yang dieksekusi secara berurutan untuk
+                memastikan alur kerja yang reproduksibel.</li>
+            <li><strong>Parameter:</strong> API seragam untuk mengatur hyperparameter algoritma.</li>
+        </ul>
+
+        <h4>8.3. Persiapan Lingkungan Praktikum</h4>
+        <p>Kita akan menggunakan dataset <em>Bank Marketing</em> untuk memprediksi apakah nasabah akan berlangganan
+            deposito berjangka (Klasifikasi Biner).</p>
+        <pre>
+# Download Dataset Bank Marketing
+!wget -q https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip
+!unzip -o bank-additional.zip
+
+# Inisialisasi Spark (jika sesi terputus)
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").appName("Modul8_MLlib").getOrCreate()
+
+# Load Data
+df_bank = spark.read.option("header", "true")\
+    .option("inferSchema", "true")\
+    .option("delimiter", ";")\
+    .csv("bank-additional/bank-additional-full.csv")
+
+print(f"Total Data: {df_bank.count()} baris")
+df_bank.printSchema()
+        </pre>
+    </div>
+
+    <!-- MODUL 8: PART 2 (FEATURE ENGINEERING) -->
+    <div class="page" id="modul8_part2">
+        <h3>Bagian 2: Advanced Feature Engineering</h3>
+
+        <p>Dalam ML terdistribusi, pra-pemrosesan data seringkali lebih kompleks daripada pelatihan model itu sendiri.
+            Data mentah harus dikonversi menjadi format numerik (Vektor) yang dapat dipahami oleh algoritma matematis.
+        </p>
+
+        <h4>8.4. Penanganan Fitur Kategorikal dan Numerik</h4>
+        <p>Kita akan membangun pipeline untuk memproses fitur campuran:</p>
+        <ul>
+            <li><strong>StringIndexer:</strong> Mengubah kolom string (misal: "job", "marital") menjadi indeks numerik.
+                Penting untuk menjaga konsistensi indeks antara data latih dan uji.</li>
+            <li><strong>OneHotEncoder:</strong> Mengubah indeks numerik menjadi vektor biner (Sparse Vector). Ini
+                mencegah algoritma mengasumsikan urutan matematis pada data nominal (misal: "Guru" > "Petani").</li>
+            <li><strong>VectorAssembler:</strong> Menggabungkan semua kolom fitur (numerik dan hasil encoding) menjadi
+                satu kolom vektor tunggal. Ini adalah syarat mutlak input algoritma Spark ML.</li>
+        </ul>
+
+        <pre>
+from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler, StandardScaler
+from pyspark.ml import Pipeline
+
+# 1. Identifikasi Kolom
+categorical_cols = ["job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "poutcome"]
+numeric_cols = ["age", "duration", "campaign", "pdays", "previous", "emp.var.rate", "cons.price.idx", "cons.conf.idx", "euribor3m", "nr.employed"]
+
+# 2. Pipeline Stages untuk Kategorikal
+stages = []
+for categoricalCol in categorical_cols:
+    # Indexing
+    stringIndexer = StringIndexer(inputCol=categoricalCol, outputCol=categoricalCol + "Index")
+    # One-Hot Encoding
+    encoder = OneHotEncoder(inputCols=[stringIndexer.getOutputCol()], outputCols=[categoricalCol + "classVec"])
+    stages += [stringIndexer, encoder]
+
+# 3. Label Indexing (Target Variable: 'y' -> yes/no)
+label_stringIdx = StringIndexer(inputCol="y", outputCol="label")
+stages += [label_stringIdx]
+
+# 4. Assembly & Scaling untuk Numerik
+# Menggabungkan semua fitur input menjadi satu vektor
+assemblerInputs = [c + "classVec" for c in categorical_cols] + numeric_cols
+assembler = VectorAssembler(inputCols=assemblerInputs, outputCol="features_raw")
+stages += [assembler]
+
+# 5. Standard Scaling
+# Penting untuk algoritma berbasis jarak (K-Means, SVM) atau gradien (Logistic Regression)
+# agar fitur dengan skala besar tidak mendominasi fitur skala kecil.
+scaler = StandardScaler(inputCol="features_raw", outputCol="features", withStd=True, withMean=True)
+stages += [scaler]
+
+print(f"Total Tahapan Pipeline Preprocessing: {len(stages)}")
+        </pre>
+
+        <div class="task-box">
+            <h4>Analisis Kritis: Sparse Vector</h4>
+            <p>Perhatikan output <code>OneHotEncoder</code>. Spark menggunakan representasi <em>Sparse Vector</em>.
+                Jelaskan mengapa format ini jauh lebih efisien memori dibandingkan <em>Dense Vector</em> untuk data
+                kategorikal dengan kardinalitas tinggi (misal: Kode Pos)?</p>
+        </div>
+    </div>
+
+    <!-- MODUL 8: PART 3 (SUPERVISED LEARNING) -->
+    <div class="page" id="modul8_part3">
+        <h3>Bagian 3: Supervised Learning (Klasifikasi & Regresi)</h3>
+
+        <h4>8.5. Membangun Model Klasifikasi</h4>
+        <p>Kita akan membandingkan dua algoritma populer: <strong>Logistic Regression</strong> (Linear) dan
+            <strong>Random Forest</strong> (Non-Linear/Ensemble). Di Spark, Random Forest dilatih secara paralel: setiap
+            tree dibangun secara independen di executor yang berbeda, kemudian di-voting.
+        </p>
+
+        <pre>
+from pyspark.ml.classification import LogisticRegression, RandomForestClassifier
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+
+# Split Data (Penting: Seed untuk Reproducibility)
+train_df, test_df = df_bank.randomSplit([0.8, 0.2], seed=2024)
+
+# --- MODEL 1: LOGISTIC REGRESSION ---
+# Definisi Estimator
+lr = LogisticRegression(featuresCol="features", labelCol="label", maxIter=10)
+
+# Gabungkan stages preprocessing dengan model
+pipeline_lr = Pipeline(stages=stages + [lr])
+
+# Training
+print("Melatih Model Logistic Regression...")
+model_lr = pipeline_lr.fit(train_df)
+
+# Prediksi
+pred_lr = model_lr.transform(test_df)
+
+# --- MODEL 2: RANDOM FOREST ---
+rf = RandomForestClassifier(featuresCol="features", labelCol="label", numTrees=20)
+pipeline_rf = Pipeline(stages=stages + [rf])
+
+print("Melatih Model Random Forest...")
+model_rf = pipeline_rf.fit(train_df)
+pred_rf = model_rf.transform(test_df)
+        </pre>
+
+        <h4>8.6. Evaluasi Model (Metrics Beyond Accuracy)</h4>
+        <p>Akurasi seringkali menyesatkan pada dataset yang tidak seimbang (imbalanced dataset). Kita akan menggunakan
+            <strong>Area Under ROC (AUC)</strong> dan <strong>Area Under PR</strong>.
+        </p>
+        <pre>
+evaluator = BinaryClassificationEvaluator(labelCol="label")
+
+# Evaluasi LR
+auc_lr = evaluator.evaluate(pred_lr, {evaluator.metricName: "areaUnderROC"})
+print(f"Logistic Regression AUC: {auc_lr:.4f}")
+
+# Evaluasi RF
+auc_rf = evaluator.evaluate(pred_rf, {evaluator.metricName: "areaUnderROC"})
+print(f"Random Forest AUC: {auc_rf:.4f}")
+
+# Confusion Matrix (Manual Calculation via SQL)
+pred_rf.createOrReplaceTempView("predictions")
+print("\nConfusion Matrix (Random Forest):")
+spark.sql("""
+    SELECT 
+        label, 
+        prediction, 
+        count(*) as count 
+    FROM predictions 
+    GROUP BY label, prediction 
+    ORDER BY label, prediction
+""").show()
+        </pre>
+
+        <h4>8.7. Hyperparameter Tuning (Cross-Validation)</h4>
+        <p>Mencari parameter optimal secara otomatis menggunakan <em>Grid Search</em>. Spark mendistribusikan pelatihan
+            setiap kombinasi parameter ke seluruh klaster.</p>
+        <pre>
+from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
+
+# Tentukan Grid Parameter
+paramGrid = ParamGridBuilder() \
+    .addGrid(rf.numTrees, [10, 50]) \
+    .addGrid(rf.maxDepth, [5, 10]) \
+    .build()
+
+# Definisi Cross Validator (3-Fold)
+# Spark akan melatih 3 x 2 x 2 = 12 model total
+cv = CrossValidator(estimator=pipeline_rf,
+                    estimatorParamMaps=paramGrid,
+                    evaluator=evaluator,
+                    numFolds=3,
+                    parallelism=4) # Melatih 4 model secara paralel
+
+print("Menjalankan Hyperparameter Tuning (Mungkin memakan waktu)...")
+cvModel = cv.fit(train_df)
+
+print(f"Best Model AUC: {evaluator.evaluate(cvModel.transform(test_df)):.4f}")
+        </pre>
+    </div>
+
+    <!-- MODUL 8: PART 4 (UNSUPERVISED LEARNING) -->
+    <div class="page" id="modul8_part4">
+        <h3>Bagian 4: Unsupervised Learning (Clustering)</h3>
+
+        <h4>8.8. Teori: K-Means Terdistribusi</h4>
+        <p>K-Means bertujuan mempartisi N observasi ke dalam K klaster. Versi standar K-Means sulit diparalelkan. Spark
+            menggunakan varian <strong>K-Means||</strong> (Scalable K-Means++), yang mengoptimalkan inisialisasi
+            centroid secara paralel untuk mengurangi jumlah langkah iterasi yang dibutuhkan untuk konvergensi.</p>
+
+        <h4>8.9. Implementasi Segmentasi Nasabah</h4>
+        <p>Kita akan mengelompokkan nasabah bank berdasarkan atribut numerik mereka (umur, durasi kampanye, dll) untuk
+            menemukan pola segmen.</p>
+
+        <pre>
+from pyspark.ml.clustering import KMeans
+from pyspark.ml.evaluation import ClusteringEvaluator
+
+# Gunakan fitur yang sudah di-scale dari pipeline sebelumnya
+# Kita perlu mengekstrak data yang sudah ditransformasi (tanpa label)
+# Menggunakan pipeline preprocessing saja (tanpa model classifier)
+prep_pipeline = Pipeline(stages=stages[:-1]) # Ambil semua stage kecuali model akhir
+prep_model = prep_pipeline.fit(df_bank)
+df_features = prep_model.transform(df_bank).select("features")
+
+# Melatih K-Means
+kmeans = KMeans().setK(3).setSeed(1).setFeaturesCol("features")
+model_km = kmeans.fit(df_features)
+
+# Prediksi Cluster
+predictions_km = model_km.transform(df_features)
+
+# Evaluasi dengan Silhouette Score
+# Nilai berkisar -1 s/d 1. Mendekati 1 berarti cluster terpisah dengan baik.
+evaluator_clust = ClusteringEvaluator()
+silhouette = evaluator_clust.evaluate(predictions_km)
+print(f"Silhouette with squared euclidean distance = {silhouette:.4f}")
+
+# Menampilkan Pusat Cluster (Centroid)
+centers = model_km.clusterCenters()
+print("\nCluster Centers (Top 3 Features):")
+for center in centers:
+    print(center[:3]) # Print 3 dimensi pertama saja untuk ringkasan
+        </pre>
+
+        <div class="theory-box">
+            <h4>Analisis Bisnis:</h4>
+            <p>Setelah mendapatkan cluster ID, langkah selanjutnya adalah join kembali dengan data asli dan melakukan
+                agregasi (rata-rata umur, rata-rata saldo) per cluster untuk memberikan "nama" bisnis pada segmen
+                tersebut (misal: "Pensiunan Kaya", "Mahasiswa", dll).</p>
+        </div>
+    </div>
+
+    <!-- MODUL 8: PART 5 (REKOMENDASI) -->
+    <div class="page" id="modul8_part5">
+        <h3>Bagian 5: Sistem Rekomendasi Skala Besar</h3>
+
+        <h4>8.10. Teori: Collaborative Filtering & ALS</h4>
+        <p>Sistem rekomendasi modern tidak hanya mencocokkan atribut barang (Content-based), tetapi memprediksi
+            preferensi berdasarkan pola interaksi pengguna lain. <strong>Alternating Least Squares (ALS)</strong> adalah
+            algoritma faktorisasi matriks yang didesain untuk komputasi paralel. Ia memecah matriks besar User-Item
+            menjadi dua matriks faktor laten yang lebih kecil (User Factors & Item Factors).</p>
+
+        <h4>8.11. Studi Kasus: Rekomendasi Film (MovieLens)</h4>
+        <pre>
+from pyspark.ml.recommendation import ALS
+from pyspark.sql import Row
+
+# 1. Persiapan Data Dummy (User, Movie, Rating)
+ratings = spark.createDataFrame([
+    (0, 100, 4.0), (0, 101, 2.0), (1, 100, 5.0), 
+    (1, 102, 3.0), (2, 101, 4.0), (2, 102, 5.0)
+], ["userId", "movieId", "rating"])
+
+# 2. Membangun Model ALS
+# coldStartStrategy="drop" penting agar tidak error saat memprediksi user baru
+als = ALS(maxIter=5, 
+          regParam=0.01, 
+          userCol="userId", 
+          itemCol="movieId", 
+          ratingCol="rating",
+          coldStartStrategy="drop")
+
+model_als = als.fit(ratings)
+
+# 3. Menghasilkan Rekomendasi
+# Rekomendasikan 2 film teratas untuk setiap user
+userRecs = model_als.recommendForAllUsers(2)
+
+print("Rekomendasi Film untuk Setiap User:")
+userRecs.show(truncate=False)
+
+# 4. Evaluasi (RMSE)
+predictions = model_als.transform(ratings)
+evaluator = RegressionEvaluator(metricName="rmse", labelCol="rating", predictionCol="prediction")
+rmse = evaluator.evaluate(predictions)
+print(f"Root-mean-square error = {rmse:.4f}")
+        </pre>
+
+        <h4>8.12. Tantangan "Cold Start"</h4>
+        <p>ALS gagal memberikan rekomendasi untuk user baru yang belum memiliki riwayat rating (Vektor laten nol).
+            Solusi praktis di industri:</p>
+        <ul>
+            <li><strong>Popularity Based:</strong> Tampilkan item terpopuler secara global untuk user baru.</li>
+            <li><strong>Hybrid:</strong> Gunakan metadata user (umur, lokasi) untuk mencari user mirip (Nearest
+                Neighbor) dan gunakan profil mereka sebagai inisialisasi.</li>
+        </ul>
+
+        <div class="task-box">
+            <h4>Tugas Analisis dan Laporan Modul 8</h4>
+            <ol>
+                <li><strong>Feature Engineering:</strong> Jelaskan mengapa fitur numerik seperti <code>age</code> dan
+                    <code>balance</code> perlu dinormalisasi (Scaled) sebelum masuk ke algoritma seperti K-Means atau
+                    Logistic Regression, tetapi tidak wajib untuk Decision Tree?
+                </li>
+                <li><strong>Evaluasi Model:</strong> Dalam kasus deteksi penipuan (Fraud Detection), metrik mana yang
+                    lebih penting: <em>Precision</em> atau <em>Recall</em>? Jelaskan alasannya dalam konteks dampak
+                    bisnis (misal: memblokir kartu nasabah valid vs meloloskan transaksi curang).</li>
+                <li><strong>Arsitektur ML:</strong> Jelaskan bagaimana Spark mendistribusikan proses pelatihan
+                    <em>Cross-Validation</em> (Grid Search). Apakah model dilatih secara sekuensial atau paralel? Apa
+                    dampaknya terhadap penggunaan resource klaster?
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ... (Bagian sebelumnya Modul 1 s.d Modul 8 tetap ada) ... -->
+
+    <!-- MODUL 9: PART 1 (TEORI VISUALISASI) -->
+    <div class="page" id="modul9">
+        <h2>Modul 9: Visualisasi Data & Pengambilan Keputusan</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Visualisasi Big Data</h3>
+
+        <h4>9.1. Filosofi dan Peran Visualisasi dalam Big Data</h4>
+        <p>Visualisasi data bukan sekadar "membuat grafik cantik", melainkan sebuah jembatan kognitif antara data mentah
+            yang abstrak dan pemahaman manusia. Dalam konteks Big Data, visualisasi menjadi krusial karena otak manusia
+            tidak mampu memproses jutaan baris data tabular secara langsung. Kita membutuhkan abstraksi visual untuk
+            mengenali pola, tren, dan outlier.</p>
+
+        <p>Ben Shneiderman merumuskan mantra visualisasi informasi yang menjadi standar emas:</p>
+        <blockquote>
+            "Overview first, zoom and filter, then details-on-demand."
+        </blockquote>
+        <p>Artinya, sistem visualisasi Big Data harus menyajikan ringkasan agregat terlebih dahulu, memungkinkan
+            pengguna untuk melakukan eksplorasi interaktif (memfilter data yang relevan), dan baru kemudian menyajikan
+            data granular jika diminta. Melanggar prinsip ini dengan memplot jutaan titik data sekaligus akan
+            menyebabkan <em>Overplotting</em> dan <em>Cognitive Overload</em>.</p>
+
+        <h4>9.2. Psikologi Persepsi: Atribut Preattentive</h4>
+        <p>Desain visualisasi yang efektif memanfaatkan cara kerja sistem visual manusia. Atribut Preattentive adalah
+            elemen visual yang diproses oleh otak secara bawah sadar dalam waktu kurang dari 200 milidetik, bahkan
+            sebelum kita sadar sedang melihatnya.</p>
+        <ul>
+            <li><strong>Warna (Hue & Intensity):</strong> Sangat efektif untuk membedakan kategori (kategorikal) atau
+                menunjukkan besaran (sekuensial).</li>
+            <li><strong>Ukuran (Size):</strong> Panjang batang atau luas lingkaran secara intuitif diasosiasikan dengan
+                kuantitas.</li>
+            <li><strong>Posisi (Position):</strong> Posisi dalam skala 2D (scatterplot) adalah cara paling akurat bagi
+                manusia untuk membandingkan nilai.</li>
+            <li><strong>Orientasi & Bentuk:</strong> Kurang efektif untuk data kuantitatif, lebih cocok untuk pembeda
+                kategori sekunder.</li>
+        </ul>
+
+        <div class="theory-box">
+            <h4>Data-Ink Ratio (Edward Tufte)</h4>
+            <p>Prinsip minimalisme: <em>"Above all else show the data."</em> Hapus semua elemen yang tidak membawa
+                informasi (non-data ink), seperti garis grid tebal, latar belakang berwarna, efek 3D, atau label yang
+                berlebihan. Semakin tinggi rasio tinta-data, semakin efektif grafik tersebut.</p>
+        </div>
+
+        <h4>9.3. Arsitektur Visualisasi Skala Besar</h4>
+        <p>Tantangan utama visualisasi Big Data adalah latensi. Mengambil 1 TB data dari HDFS untuk di-render di browser
+            adalah mustahil. Arsitektur yang benar adalah:</p>
+        <ol>
+            <li><strong>Data Storage (HDFS/S3):</strong> Menyimpan data mentah.</li>
+            <li><strong>Compute Engine (Spark/Trino):</strong> Melakukan agregasi, sampling, atau binning.</li>
+            <li><strong>Visualization Client (Python/Tableau):</strong> Menerima data ringkasan (hasil agregasi) yang
+                ukurannya kecil (KB/MB) untuk di-render menjadi piksel.</li>
+        </ol>
+    </div>
+
+    <!-- MODUL 9: PART 2 (IMPLEMENTASI TEKNIS) -->
+    <div class="page" id="modul9_part2">
+        <h3>Bagian 2: Implementasi Teknis Visualisasi dengan Python</h3>
+
+        <p>Pada praktikum ini, kita akan menggunakan pendekatan hibrida: Apache Spark untuk pemrosesan data berat
+            (backend) dan pustaka Python (Matplotlib/Seaborn) untuk rendering grafik (frontend).</p>
+
+        <h4>9.4. Persiapan Data: Agregasi Server-Side</h4>
+        <p>Jangan pernah melakukan <code>toPandas()</code> pada DataFrame besar! Selalu lakukan agregasi terlebih dahulu
+            di Spark.</p>
+
+        <pre>
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+from pyspark.sql.functions import col, month, year, sum as _sum, avg
+
+# Load Data Dummy Transaksi (1 Juta Baris)
+# Kolom: date, category, amount
+print("Generating Data...")
+df_viz = spark.range(0, 1000000).withColumn("date", (rand() * 365).cast("int"))\
+    .selectExpr("date_add('2023-01-01', date) as trx_date", 
+                "case when rand() > 0.5 then 'Elektronik' else 'Fashion' end as category",
+                "cast(rand() * 1000 as int) as amount")
+
+# --- BENAR: Agregasi di Spark ---
+# Menghitung total penjualan per bulan per kategori
+# Data yang dikirim ke Driver/Pandas hanya 12 bulan x 2 kategori = 24 baris (Sangat Kecil)
+df_agg = df_viz.groupBy(year("trx_date").alias("year"), 
+                        month("trx_date").alias("month"), 
+                        "category")\
+               .agg(_sum("amount").alias("total_sales"))\
+               .orderBy("year", "month")
+
+# Konversi ke Pandas
+pdf_sales = df_agg.toPandas()
+print("Data Siap Visualisasi:")
+print(pdf_sales.head())
+        </pre>
+
+        <h4>9.5. Visualisasi Perbandingan (Bar Chart)</h4>
+        <p>Digunakan untuk membandingkan nilai antar kategori diskrit.</p>
+        <pre>
+# Mengatur style seaborn
+sns.set_theme(style="whitegrid")
+
+plt.figure(figsize=(10, 6))
+barplot = sns.barplot(x="month", y="total_sales", hue="category", data=pdf_sales, palette="viridis")
+
+plt.title("Total Penjualan Bulanan per Kategori (2023)", fontsize=16)
+plt.xlabel("Bulan", fontsize=12)
+plt.ylabel("Total Penjualan (IDR)", fontsize=12)
+plt.legend(title="Kategori")
+
+# Menambahkan label nilai di atas batang
+for container in barplot.containers:
+    barplot.bar_label(container, fmt='%d', padding=3, fontsize=10)
+
+plt.show()
+        </pre>
+
+        <h4>9.6. Visualisasi Distribusi (Histogram & KDE)</h4>
+        <p>Untuk memahami sebaran data. Karena histogram membutuhkan data detail, kita bisa menggunakan teknik
+            <strong>Sampling</strong> jika data terlalu besar untuk ditarik semua.
+        </p>
+        <pre>
+# Ambil sampel 5% data untuk melihat distribusi nilai transaksi
+# Sampling dilakukan di Spark secara terdistribusi
+pdf_sample = df_viz.sample(fraction=0.05, seed=42).select("amount").toPandas()
+
+plt.figure(figsize=(10, 6))
+# Histogram dengan Kernel Density Estimate (Garis Kurva)
+sns.histplot(data=pdf_sample, x="amount", bins=30, kde=True, color="teal")
+
+plt.title("Distribusi Nilai Transaksi (Sampel 5%)", fontsize=16)
+plt.xlabel("Nilai Transaksi", fontsize=12)
+plt.ylabel("Frekuensi", fontsize=12)
+plt.show()
+        </pre>
+    </div>
+
+    <!-- MODUL 9: PART 3 (VISUALISASI LANJUTAN) -->
+    <div class="page" id="modul9_part3">
+        <h3>Bagian 3: Visualisasi Hubungan dan Anomali</h3>
+
+        <h4>9.7. Mengatasi Overplotting: Hexbin Plot</h4>
+        <p>Scatterplot standar akan gagal (menjadi blob hitam) jika ada jutaan titik. Solusinya adalah
+            <strong>Binning</strong> (mengelompokkan titik ke dalam area heksagonal/persegi).
+        </p>
+        <pre>
+# Generasi Data Korelasi (Dummy)
+df_corr = spark.range(0, 100000).selectExpr(
+    "randn() * 10 + 50 as age", 
+    "randn() * 1000 + 5000 as salary"
+)
+pdf_corr = df_corr.toPandas()
+
+# Hexbin Plot
+plt.figure(figsize=(10, 8))
+plt.hexbin(x=pdf_corr['age'], y=pdf_corr['salary'], gridsize=25, cmap='Blues')
+plt.colorbar(label='Jumlah Data per Bin')
+plt.title("Hubungan Umur vs Gaji (Hexbin Density)", fontsize=16)
+plt.xlabel("Umur")
+plt.ylabel("Gaji")
+plt.show()
+        </pre>
+
+        <h4>9.8. Visualisasi Anomali: Box Plot & Violin Plot</h4>
+        <p>Box plot sangat efisien untuk mendeteksi outlier dan membandingkan distribusi antar grup.</p>
+        <pre>
+# Menambahkan kolom grup buatan
+import numpy as np
+pdf_corr['department'] = np.random.choice(['IT', 'HR', 'Sales'], size=len(pdf_corr))
+
+plt.figure(figsize=(12, 6))
+# Violin plot menampilkan kepadatan distribusi (lebih detail dari boxplot)
+sns.violinplot(x="department", y="salary", data=pdf_corr, inner="quartile", palette="muted")
+
+plt.title("Distribusi Gaji per Departemen", fontsize=16)
+plt.show()
+        </pre>
+
+        <h4>9.9. Visualisasi Korelasi: Heatmap</h4>
+        <p>Sangat berguna untuk melihat hubungan antar banyak variabel sekaligus (Multivariate Analysis).</p>
+        <pre>
+# Menghitung matriks korelasi
+corr_matrix = pdf_corr[['age', 'salary']].corr()
+
+plt.figure(figsize=(6, 5))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1)
+plt.title("Matriks Korelasi")
+plt.show()
+        </pre>
+    </div>
+
+    <!-- MODUL 9: PART 4 (DASHBOARD & STORYTELLING) -->
+    <div class="page" id="modul9_part4">
+        <h3>Bagian 4: Desain Dashboard dan Pengambilan Keputusan</h3>
+
+        <h4>9.10. Prinsip Desain Dashboard yang Efektif</h4>
+        <p>Dashboard adalah alat komunikasi, bukan sekadar kumpulan grafik. Desain yang baik harus mengikuti pola
+            membaca manusia (F-Pattern).</p>
+        <ul>
+            <li><strong>Pojok Kiri Atas (Primary Optical Area):</strong> Tempatkan KPI (Key Performance Indicator)
+                terpenting (Total Revenue, Profit). Gunakan <em>Big Number Widget</em>.</li>
+            <li><strong>Tengah:</strong> Tren waktu dan perbandingan kategori (Line Chart, Bar Chart).</li>
+            <li><strong>Bawah/Kanan:</strong> Detail data atau tabel granular.</li>
+        </ul>
+
+        <h4>9.11. Data Storytelling: Konteks dan Aksi</h4>
+        <p>Visualisasi tanpa narasi seringkali ambigu. Data Storytelling mengubah "Apa" (What) menjadi "Lalu Kenapa" (So
+            What).</p>
+        <p><strong>Framework:</strong></p>
+        <ol>
+            <li><strong>Situasi:</strong> Tampilkan data dasar ("Penjualan Q1 stabil").</li>
+            <li><strong>Komplikasi:</strong> Tampilkan anomali ("Tapi churn rate naik 5% di segmen remaja").</li>
+            <li><strong>Resolusi:</strong> Tampilkan data pendukung solusi ("Promo targeted di TikTok terbukti efektif
+                di uji coba").</li>
+        </ol>
+
+        <h4>9.12. Studi Kasus: Executive Dashboard</h4>
+        <p>Anda diminta membuat dashboard untuk CEO perusahaan Ritel. Data yang tersedia: Transaksi Harian, Stok Gudang,
+            dan Komplain Pelanggan.</p>
+        <div class="task-box">
+            <h4>Tugas Perancangan Dashboard</h4>
+            <p>Berdasarkan data dummy yang telah kita buat, rancanglah sketsa (mockup) dashboard yang menjawab
+                pertanyaan:</p>
+            <ol>
+                <li>Bagaimana performa penjualan bulan ini dibanding target? (Gunakan Gauge Chart atau Bullet Chart).
+                </li>
+                <li>Produk apa yang tren penjualannya menurun drastis? (Gunakan Sparkline atau Heatmap).</li>
+                <li>Apakah ada korelasi antara diskon dan volume penjualan? (Scatterplot).</li>
+            </ol>
+            <p>Implementasikan salah satu chart tersebut menggunakan Python.</p>
+        </div>
+
+        <h4>9.13. Analisis Kritis</h4>
+        <p>Dalam konteks Big Data, dashboard <em>real-time</em> seringkali diinginkan manajemen. Namun, real-time
+            dashboard memiliki biaya infrastruktur tinggi.</p>
+        <div class="task-box">
+            <h4>Tugas Analisis Modul 9</h4>
+            <ol>
+                <li>Jelaskan <em>trade-off</em> antara "Akurasi Data" dan "Kecepatan Update" pada dashboard real-time
+                    yang menggunakan arsitektur Lambda atau Kappa.</li>
+                <li>Mengapa penggunaan Pie Chart sering tidak disarankan dalam visualisasi data profesional, terutama
+                    jika kategori lebih dari 5? Apa alternatif terbaiknya?</li>
+            </ol>
+        </div>
+    </div>
+    <!-- ... (Bagian sebelumnya Modul 1 s.d Modul 9 tetap ada) ... -->
+
+    <!-- MODUL 10: PART 1 (TEORI BISNIS) -->
+    <div class="page" id="modul10">
+        <h2>Modul 10: Studi Kasus Bisnis (Analisis Pelanggan & Penjualan)</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Customer Relationship Management (CRM)</h3>
+
+        <h4>10.1. Paradigma Segmentasi Pelanggan</h4>
+        <p>Dalam analitik bisnis modern, memahami perilaku pelanggan adalah kunci profitabilitas. Prinsip Pareto (Aturan
+            80/20) sering berlaku: 80% pendapatan perusahaan berasal dari 20% pelanggan setia. Oleh karena itu,
+            memperlakukan semua pelanggan dengan strategi pemasaran yang sama adalah tidak efisien.</p>
+
+        <p>Segmentasi bertujuan mengelompokkan pelanggan ke dalam kohort yang homogen berdasarkan perilaku pembelian
+            mereka. Metode yang paling klasik dan efektif adalah analisis **RFM**:</p>
+        <ul>
+            <li><strong>Recency (R):</strong> Seberapa baru pelanggan melakukan transaksi terakhir? (Semakin kecil
+                semakin baik). Ini adalah prediktor terkuat untuk retensi.</li>
+            <li><strong>Frequency (F):</strong> Seberapa sering pelanggan bertransaksi dalam periode tertentu? (Semakin
+                besar semakin baik). Menunjukkan loyalitas.</li>
+            <li><strong>Monetary (M):</strong> Berapa total nilai uang yang dibelanjakan? (Semakin besar semakin baik).
+                Menunjukkan nilai ekonomi pelanggan.</li>
+        </ul>
+
+        <div class="theory-box">
+            <h4>Customer Lifetime Value (CLV)</h4>
+            <p>RFM adalah proksi untuk mengukur CLV. Pelanggan dengan skor RFM tinggi (misal: 555) memiliki probabilitas
+                tertinggi untuk merespons promosi di masa depan, sedangkan pelanggan dengan skor Recency rendah (misal:
+                155) berisiko tinggi untuk <em>Churn</em> (berhenti berlangganan).</p>
+        </div>
+
+        <h4>10.2. Market Basket Analysis (MBA)</h4>
+        <p>Selain memahami "Siapa" pelanggan (RFM), kita perlu memahami "Apa" yang mereka beli. Market Basket Analysis
+            bertujuan menemukan pola asosiasi antar produk (<em>Affinity Analysis</em>). Pertanyaan kuncinya: <em>"Jika
+                pelanggan membeli Roti, seberapa besar kemungkinan mereka membeli Selai?"</em>.</p>
+        <p>Algoritma yang digunakan adalah <strong>Association Rule Mining</strong> (seperti Apriori atau FP-Growth)
+            yang menghasilkan aturan <code>{A} -> {B}</code> dengan metrik:</p>
+        <ul>
+            <li><strong>Support:</strong> Popularitas barang.</li>
+            <li><strong>Confidence:</strong> Probabilitas bersyarat P(B|A).</li>
+            <li><strong>Lift:</strong> Kekuatan korelasi (Lift > 1 berarti korelasi positif).</li>
+        </ul>
+    </div>
+
+    <!-- MODUL 10: PART 2 (IMPLEMENTASI RFM) -->
+    <div class="page" id="modul10_part2">
+        <h3>Bagian 2: Implementasi Teknis Analisis RFM (Rule-Based)</h3>
+
+        <p>Kita akan menggunakan PySpark untuk menghitung skor RFM dari data transaksi mentah berskala besar. Pendekatan
+            ini menggunakan aturan manual (Rule-Based Segmentation).</p>
+
+        <h4>10.3. Persiapan Data Transaksi</h4>
+        <pre>
+from pyspark.sql.functions import col, to_date, count, sum as _sum, max as _max, datediff, lit, when
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
+
+# 1. Schema Definition & Dummy Data Generation
+# Skenario: Data transaksi retail selama 1 tahun
+# Kolom: transaction_id, customer_id, date, amount
+print("Generating Transaction Data...")
+data_trx = [
+    (1, "Cust_A", "2023-01-01", 1000000), (2, "Cust_A", "2023-02-01", 500000),
+    (3, "Cust_B", "2023-01-10", 200000),  (4, "Cust_B", "2023-01-11", 200000),
+    (5, "Cust_C", "2022-12-01", 5000000), # Churn Risk (Belanja besar tapi lama tidak kembali)
+    (6, "Cust_D", "2023-03-25", 50000),   # New Customer
+    (7, "Cust_A", "2023-03-20", 1500000), # Loyal
+]
+schema = ["trx_id", "customer_id", "date_str", "amount"]
+df_sales = spark.createDataFrame(data_trx, schema)
+
+# Konversi tipe data tanggal
+df_sales = df_sales.withColumn("date", to_date(col("date_str")))
+
+# Tetapkan Tanggal Analisis (Anchor Date: 2023-04-01)
+# Dalam praktik nyata, gunakan current_date()
+anchor_date = lit("2023-04-01")
+
+print("Data Transaksi:")
+df_sales.show()
+        </pre>
+
+        <h4>10.4. Kalkulasi Metrik RFM</h4>
+        <pre>
+# Agregasi per Customer
+rfm_agg = df_sales.groupBy("customer_id").agg(
+    _max("date").alias("last_purchase"),
+    count("trx_id").alias("Frequency"),
+    _sum("amount").alias("Monetary")
+)
+
+# Hitung Recency (Hari sejak pembelian terakhir)
+rfm_calc = rfm_agg.withColumn("Recency", datediff(anchor_date, col("last_purchase")))
+
+print("Tabel RFM Mentah:")
+rfm_calc.show()
+        </pre>
+
+        <h4>10.5. Segmentasi Berbasis Aturan (Scoring)</h4>
+        <p>Memberikan label segmen berdasarkan logika bisnis sederhana.</p>
+        <pre>
+# Logika Bisnis:
+# - Champions: Baru belanja (< 30 hari), Sering (> 2x), Banyak (> 2jt)
+# - At Risk: Sudah lama hilang (> 90 hari) tapi dulu belanja banyak (> 1jt)
+# - New: Baru belanja (< 30 hari) tapi frekuensi rendah
+# - Hibernating: Sisanya
+
+rfm_segment = rfm_calc.withColumn("Segment", 
+    when((col("Recency") <= 30) & (col("Frequency") >= 3) & (col("Monetary") >= 2000000), "Champions")
+    .when((col("Recency") > 90) & (col("Monetary") >= 2000000), "At Risk")
+    .when((col("Recency") <= 30) & (col("Frequency") < 3), "New Customers")
+    .otherwise("Hibernating")
+)
+
+print("Hasil Segmentasi Pelanggan:")
+rfm_segment.orderBy("Recency").show()
+        </pre>
+    </div>
+
+    <!-- MODUL 10: PART 3 (CLUSTERING K-MEANS) -->
+    <div class="page" id="modul10_part3">
+        <h3>Bagian 3: Segmentasi Otomatis dengan Machine Learning (K-Means)</h3>
+
+        <p>Segmentasi berbasis aturan seringkali subjektif dan sulit menentukan ambang batas (threshold) yang tepat.
+            Pendekatan <em>Unsupervised Learning</em> menggunakan K-Means memungkinkan data membentuk kelompok secara
+            alami berdasarkan jarak matematis.</p>
+
+        <h4>10.6. Preprocessing Data untuk ML</h4>
+        <p>Algoritma K-Means sensitif terhadap skala data. Monetary (Jutaan) akan mendominasi Recency (Puluhan). Kita
+            harus melakukan <strong>Vector Assembly</strong> dan <strong>Standard Scaling</strong>.</p>
+
+        <pre>
+from pyspark.ml.feature import VectorAssembler, StandardScaler
+from pyspark.ml.clustering import KMeans
+from pyspark.ml import Pipeline
+
+# 1. Vector Assembler: Gabung fitur ke satu kolom vektor
+assembler = VectorAssembler(
+    inputCols=["Recency", "Frequency", "Monetary"], 
+    outputCol="features_raw"
+)
+
+# 2. Standard Scaler: Normalisasi (Mean=0, Std=1)
+scaler = StandardScaler(inputCol="features_raw", outputCol="features")
+
+# 3. K-Means Model (k=3 cluster)
+kmeans = KMeans().setK(3).setSeed(42).setFeaturesCol("features")
+
+# Pipeline
+pipeline_km = Pipeline(stages=[assembler, scaler, kmeans])
+
+# Training
+model_km = pipeline_km.fit(rfm_calc)
+
+# Prediksi
+predictions = model_km.transform(rfm_calc)
+print("Hasil Clustering K-Means:")
+predictions.select("customer_id", "Recency", "Frequency", "Monetary", "prediction").show()
+        </pre>
+
+        <h4>10.7. Interpretasi Cluster (Profiling)</h4>
+        <p>Setelah mendapatkan <code>prediction</code> (Cluster ID: 0, 1, 2), kita harus memaknai karakteristik setiap
+            cluster (Cluster Profiling) untuk memberi nama bisnis.</p>
+        <pre>
+# Hitung rata-rata RFM per Cluster
+cluster_stats = predictions.groupBy("prediction").agg(
+    _sum("Monetary").alias("Total_M"),
+    ( _sum("Monetary") / count("customer_id") ).alias("Avg_Monetary"),
+    ( _sum("Recency") / count("customer_id") ).alias("Avg_Recency"),
+    ( _sum("Frequency") / count("customer_id") ).alias("Avg_Frequency"),
+    count("customer_id").alias("Num_Customers")
+).orderBy("prediction")
+
+print("Profil Statistik Cluster:")
+cluster_stats.show()
+        </pre>
+        <div class="theory-box">
+            <strong>Analisis Output:</strong><br>
+            Misal Cluster 0 memiliki Avg_Recency rendah dan Avg_Monetary tinggi, ini adalah "Loyal Customers". Cluster 1
+            dengan Avg_Recency tinggi dan Avg_Monetary tinggi adalah "Lost Whales" (Pelanggan besar yang hilang).
+        </div>
+    </div>
+
+    <!-- MODUL 10: PART 4 (MARKET BASKET) -->
+    <div class="page" id="modul10_part4">
+        <h3>Bagian 4: Market Basket Analysis (FP-Growth)</h3>
+
+        <p>Menggunakan algoritma <strong>FP-Growth (Frequent Pattern Growth)</strong> yang jauh lebih efisien memori
+            daripada Apriori untuk dataset besar.</p>
+
+        <h4>10.8. Persiapan Data Transaksi</h4>
+        <pre>
+# Data harus dalam format: ID Transaksi, Array of Items
+# Contoh:
+# Trx1: [Susu, Roti]
+# Trx2: [Roti, Mentega]
+# Trx3: [Susu, Roti, Mentega, Telur]
+
+data_basket = [
+    (1, ["susu", "roti", "telur"]),
+    (2, ["roti", "mentega"]),
+    (3, ["susu", "telur", "roti", "mentega"]),
+    (4, ["susu", "telur"]),
+    (5, ["roti", "kecap"])
+]
+df_basket = spark.createDataFrame(data_basket, ["trx_id", "items"])
+        </pre>
+
+        <h4>10.9. Menjalankan FP-Growth</h4>
+        <pre>
+from pyspark.ml.fpm import FPGrowth
+
+# Konfigurasi Model
+# minSupport=0.4: Itemset harus muncul minimal di 40% transaksi
+# minConfidence=0.6: Aturan harus benar minimal 60% dari waktu
+fp = FPGrowth(itemsCol="items", minSupport=0.4, minConfidence=0.6)
+model_fp = fp.fit(df_basket)
+
+# 1. Frequent Itemsets (Barang yang sering dibeli bersama)
+print("Frequent Itemsets:")
+model_fp.freqItemsets.show()
+
+# 2. Association Rules (Aturan Jika-Maka)
+print("Association Rules:")
+# antecedent -> consequent
+model_fp.associationRules.show()
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis dan Laporan Modul 10</h4>
+            <ol>
+                <li><strong>Strategi Bisnis RFM:</strong> Berdasarkan hasil segmentasi (Rule-based atau K-Means),
+                    rancang strategi pemasaran spesifik untuk segmen "At Risk" (Recency tinggi, Monetary tinggi). Apa
+                    jenis promo yang tepat untuk mengembalikan mereka (<em>Win-back campaign</em>)?</li>
+                <li><strong>Interpretasi MBA:</strong> Jika Anda menemukan aturan <code>{Roti, Susu} -> {Mentega}</code>
+                    dengan <em>Lift</em> = 2.5, apa artinya? Apakah menempatkan Roti dan Mentega bersebelahan di rak
+                    toko adalah ide yang baik, atau justru berjauhan untuk memaksa pelanggan berjalan melewati lorong
+                    lain? Jelaskan strateginya.</li>
+            </ol>
+        </div>
+    </div>
+    <!-- ... (Bagian sebelumnya Modul 1 s.d Modul 10 tetap ada) ... -->
+
+    <!-- MODUL 11: PART 1 (TEORI KEAMANAN) -->
+    <div class="page" id="modul11">
+        <h2>Modul 11: Tata Kelola, Keamanan & Etika Data</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Keamanan Big Data</h3>
+
+        <h4>11.1. Tantangan Keamanan di Lingkungan Terdistribusi</h4>
+        <p>Mengamankan klaster Big Data jauh lebih kompleks daripada database tunggal karena:</p>
+        <ul>
+            <li><strong>Perimeter yang Luas:</strong> Ribuan node berarti ribuan titik masuk potensial bagi penyerang.
+            </li>
+            <li><strong>Keragaman Data:</strong> Data sensitif (PII) sering bercampur dengan data publik dalam satu Data
+                Lake.</li>
+            <li><strong>Multi-Tenancy:</strong> Banyak pengguna dan aplikasi berbagi sumber daya yang sama, memerlukan
+                isolasi yang ketat.</li>
+        </ul>
+
+        <div class="theory-box">
+            <h4>Trias CIA dalam Big Data</h4>
+            <ul>
+                <li><strong>Confidentiality (Kerahasiaan):</strong> Enkripsi data saat diam (at-rest) di HDFS/S3 dan
+                    saat bergerak (in-transit) di jaringan.</li>
+                <li><strong>Integrity (Integritas):</strong> Menjamin data tidak dimodifikasi oleh pihak yang tidak
+                    berwenang (Checksum, Audit Log).</li>
+                <li><strong>Availability (Ketersediaan):</strong> Menjamin data selalu dapat diakses (High Availability
+                    NameNode, Replication).</li>
+            </ul>
+        </div>
+
+        <h4>11.2. Mekanisme Autentikasi dan Otorisasi</h4>
+        <p>Standar industri untuk keamanan Hadoop/Spark adalah <strong>Kerberos</strong> untuk autentikasi
+            (memverifikasi "siapa Anda") dan <strong>Apache Ranger/Sentry</strong> untuk otorisasi (menentukan "apa yang
+            boleh Anda lakukan").</p>
+        <p>Dalam lingkungan Cloud modern, ini sering digantikan oleh IAM (Identity and Access Management) seperti AWS
+            IAM atau Azure AD.</p>
+    </div>
+
+    <!-- MODUL 11: PART 2 (IMPLEMENTASI TEKNIS) -->
+    <div class="page" id="modul11_part2">
+        <h3>Bagian 2: Implementasi Teknis Perlindungan Data</h3>
+
+        <p>Kita akan mensimulasikan teknik perlindungan data sensitif menggunakan fungsi bawaan Spark. Ini adalah
+            praktik wajib untuk mematuhi regulasi privasi.</p>
+
+        <h4>11.3. Data Masking (Penyamaran Data)</h4>
+        <p>Teknik menyembunyikan sebagian data asli sehingga tidak dapat dibaca langsung, namun tetap mempertahankan
+            formatnya untuk keperluan testing atau analisis non-sensitif.</p>
+        <pre>
+from pyspark.sql.functions import lit, substring, concat, col, sha2
+
+# 1. Dataset Dummy dengan PII (Personally Identifiable Information)
+data_users = [
+    (1, "Budi Santoso", "budi.santoso@gmail.com", "081234567890", "1234-5678-9012-3456"),
+    (2, "Siti Aminah", "siti.aminah@yahoo.com", "089876543210", "9876-5432-1098-7654")
+]
+df_users = spark.createDataFrame(data_users, ["id", "nama", "email", "telepon", "kartu_kredit"])
+
+print("Data Asli (Sangat Sensitif):")
+df_users.show(truncate=False)
+
+# 2. Implementasi Masking
+# Email: Tampilkan 3 huruf pertama, sisanya bintang, biarkan domain terlihat
+# Telepon: Ganti 8 digit pertama dengan 'X'
+# Kartu Kredit: Tampilkan 4 digit terakhir saja
+from pyspark.sql.functions import substring_index, regexp_replace
+
+df_masked = df_users.withColumn("email_masked", 
+        concat(substring(col("email"), 1, 3), lit("****"), substring(col("email"), -4, 4))
+    ).withColumn("telepon_masked", 
+        concat(lit("XXXX-XXXX-"), substring(col("telepon"), -4, 4))
+    ).withColumn("cc_masked", 
+        concat(lit("****-****-****-"), substring(col("kartu_kredit"), -4, 4))
+    )
+
+print("Data Setelah Masking (Aman untuk Analis):")
+df_masked.select("id", "nama", "email_masked", "telepon_masked", "cc_masked").show(truncate=False)
+        </pre>
+
+        <h4>11.4. Pseudonymization (Hashing)</h4>
+        <p>Mengganti identitas asli dengan pengenal buatan (hash) yang konsisten. Ini memungkinkan data di-join antar
+            tabel tanpa mengungkap identitas asli subjek data.</p>
+        <pre>
+# Hashing SHA-256 (One-way encryption)
+# Menambahkan 'salt' (string acak) agar tidak mudah di-reverse dengan Rainbow Table
+salt = "RahasiaPerusahaan2025"
+
+df_hashed = df_users.withColumn("email_hash", 
+    sha2(concat(col("email"), lit(salt)), 256)
+)
+
+print("Data Ter-Hash (Untuk Join antar sistem):")
+df_hashed.select("id", "email_hash").show(truncate=False)
+        </pre>
+    </div>
+
+    <!-- MODUL 11: PART 3 (TATA KELOLA & AUDIT) -->
+    <div class="page" id="modul11_part3">
+        <h3>Bagian 3: Tata Kelola (Governance) dan Audit</h3>
+
+        <h4>11.5. Row-Level Security (RLS)</h4>
+        <p>Skenario: Seorang analis data cabang Jakarta hanya boleh melihat data penjualan Jakarta, meskipun tabel
+            fisiknya mencakup seluruh Indonesia. Dalam database modern, ini diatur oleh <em>Policy</em>. Di Spark, kita
+            bisa mensimulasikannya dengan filter dinamis.</p>
+
+        <pre>
+# Dataset Penjualan Nasional
+data_sales = [
+    (101, "Jakarta", 5000000), (102, "Bandung", 3000000),
+    (103, "Surabaya", 4500000), (104, "Jakarta", 2000000)
+]
+df_sales = spark.createDataFrame(data_sales, ["trx_id", "cabang", "amount"])
+
+# Simulasi Context Pengguna Login
+current_user_role = "KEPALA_CABANG_JAKARTA"
+
+# Fungsi Policy RLS
+def apply_rls(df, user_role):
+    if user_role == "ADMIN_PUSAT":
+        return df # Lihat semua
+    elif user_role == "KEPALA_CABANG_JAKARTA":
+        return df.filter(col("cabang") == "Jakarta")
+    elif user_role == "KEPALA_CABANG_BANDUNG":
+        return df.filter(col("cabang") == "Bandung")
+    else:
+        return df.limit(0) # Tidak ada akses
+
+print(f"View untuk User: {current_user_role}")
+df_view = apply_rls(df_sales, current_user_role)
+df_view.show()
+        </pre>
+
+        <h4>11.6. Audit Kualitas Data (Automated Quality Gate)</h4>
+        <p>Mencegah "Data Sampah" masuk ke <em>Data Warehouse</em> produksi. Pipeline harus berhenti (fail) jika
+            kualitas data di bawah ambang batas.</p>
+        <pre>
+# Aturan Kualitas:
+# 1. Amount tidak boleh negatif
+# 2. Cabang tidak boleh NULL
+
+invalid_records = df_sales.filter(
+    (col("amount") < 0) | (col("cabang").isNull())
+)
+invalid_count = invalid_records.count()
+
+if invalid_count > 0:
+    print(f"ALERT: Ditemukan {invalid_count} data tidak valid!")
+    print("Sampel Data Invalid:")
+    invalid_records.show()
+    # raise Exception("Pipeline Dihentikan: Kualitas Data Buruk")
+else:
+    print("AUDIT PASS: Data bersih dan siap diproses.")
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis dan Laporan Modul 11</h4>
+            <ol>
+                <li><strong>Analisis Privasi:</strong> Jelaskan perbedaan antara <em>Anonymization</em> (Anonimisasi)
+                    dan <em>Pseudonymization</em> (Nama Samaran). Manakah yang memungkinkan data dipulihkan kembali ke
+                    identitas aslinya jika pemegang kunci mengizinkan?</li>
+                <li><strong>Etika Data:</strong> Jika Anda menggunakan data <code>email_hash</code> untuk melacak
+                    perilaku pengguna lintas platform tanpa persetujuan mereka, prinsip etika apa yang dilanggar?
+                    Jelaskan kaitannya dengan regulasi UU PDP (Pelindungan Data Pribadi).</li>
+                <li><strong>Keamanan:</strong> Mengapa menambahkan <em>Salt</em> saat melakukan Hashing password atau
+                    email sangat penting? Serangan apa yang dicegah oleh teknik ini?</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ... (Modul 11 sebelumnya) ... -->
+
+    <!-- MODUL 12: STUDI KASUS LINTAS SEKTOR -->
+    <div class="page" id="modul12">
+        <h2>Modul 12: Studi Kasus Lintas Sektor</h2>
+
+        <h3>Bagian 1: Landasan Teoretis Penerapan Domain Spesifik</h3>
+        <p>Penerapan Big Data tidak terbatas pada industri komersial. Sektor publik dan ilmiah memanfaatkan analitik
+            untuk memecahkan masalah kemanusiaan yang kompleks. Karakteristik data pada sektor ini sering kali berbeda:
+        </p>
+        <ul>
+            <li><strong>Pertanian:</strong> Data sangat bergantung pada geospasial dan deret waktu musim
+                (Spatio-Temporal). Variabilitas tinggi akibat faktor alam.</li>
+            <li><strong>Kebencanaan:</strong> Membutuhkan latensi nol (Zero Latency) dan toleransi kesalahan nol.
+                <em>False Negative</em> (gagal mendeteksi gempa) berakibat fatal.
+            </li>
+            <li><strong>Kesehatan:</strong> Sensitivitas privasi tertinggi (HIPAA/GDPR) dan membutuhkan presisi tinggi
+                (High Precision) untuk diagnosis medis.</li>
+        </ul>
+
+        <h3>Bagian 2: Pertanian Presisi (Smart Farming)</h3>
+        <h4>12.1. Prediksi Hasil Panen dengan Regresi Linear</h4>
+        <p>Kita akan membangun model untuk memprediksi tonase hasil panen padi berdasarkan variabel lingkungan seperti
+            curah hujan, suhu, dan penggunaan pupuk. Ini membantu petani merencanakan logistik pasca-panen.</p>
+
+        <pre>
+from pyspark.ml.regression import LinearRegression
+from pyspark.ml.feature import VectorAssembler
+
+# 1. Persiapan Data Latih
+# Kolom: [Curah Hujan (mm), Suhu Rata2 (C), Luas Lahan (Ha), Pupuk (kg/ha), Hasil Panen (ton)]
+print("--- [SMART FARMING: PREDIKSI PANEN] ---")
+
+data_tani = [
+    (150, 28, 2.0, 50, 6.5), (200, 27, 3.0, 80, 10.0), (100, 30, 1.5, 40, 4.2),
+    (250, 26, 4.0, 100, 14.0), (120, 29, 2.0, 45, 5.8), (180, 28, 2.5, 60, 8.1),
+    (300, 25, 5.0, 120, 16.5), (90, 31, 1.0, 30, 3.0)
+]
+cols = ["hujan", "suhu", "luas", "pupuk", "hasil"]
+df_tani = spark.createDataFrame(data_tani, cols)
+
+# 2. Feature Engineering
+# Menggabungkan fitur independen menjadi satu vektor
+assembler = VectorAssembler(
+    inputCols=["hujan", "suhu", "luas", "pupuk"], 
+    outputCol="features"
+)
+data_ready = assembler.transform(df_tani)
+
+# 3. Modeling
+lr = LinearRegression(featuresCol="features", labelCol="hasil")
+model_tani = lr.fit(data_ready)
+
+# 4. Interpretasi Model (Koefisien)
+print(f"Intercept (Basis): {model_tani.intercept:.2f} ton")
+print("Koefisien Fitur:")
+print(f"  1. Hujan : {model_tani.coefficients[0]:.4f} (Dampak per mm)")
+print(f"  2. Suhu  : {model_tani.coefficients[1]:.4f} (Dampak per Celcius)")
+print(f"  3. Luas  : {model_tani.coefficients[2]:.4f} (Dampak per Ha)")
+print(f"  4. Pupuk : {model_tani.coefficients[3]:.4f} (Dampak per Kg)")
+
+# 5. Prediksi Skenario Baru
+# Kasus: Hujan 160mm, Suhu 29C, Luas 2.5Ha, Pupuk 55kg
+prediksi = model_tani.predict(assembler.transform(spark.createDataFrame([(160, 29, 2.5, 55)], cols[:-1])).head().features)
+print(f"\nEstimasi Hasil Panen untuk skenario baru: {prediksi:.2f} ton")
+        </pre>
+
+        <div class="theory-box">
+            <strong>Analisis Koefisien:</strong> Nilai koefisien positif menunjukkan korelasi positif (menambah pupuk
+            meningkatkan hasil), sedangkan nilai negatif (jika ada, misal suhu terlalu panas) menunjukkan dampak
+            merugikan. Ini adalah bentuk analitik <em>Preskriptif</em> sederhana.
+        </div>
+
+        <h3>Bagian 3: Manajemen Kebencanaan (Disaster Management)</h3>
+        <h4>12.2. Sistem Peringatan Dini Tsunami (Rule-Based Engine)</h4>
+        <p>Sistem peringatan dini membutuhkan logika deterministik yang cepat, bukan model probabilistik yang kompleks.
+            Kita akan mensimulasikan aliran data sensor gempa dan menerapkan aturan fisika (Magnitudo & Kedalaman) untuk
+            menentukan status bahaya.</p>
+
+        <pre>
+from pyspark.sql.functions import when, col
+
+print("\n--- [KEBENCANAAN: DETEKSI TSUNAMI] ---")
+
+# 1. Simulasi Data Stream Sensor Gempa (Batch Mode)
+# Lokasi sensor di titik-titik rawan (Megathrust)
+data_gempa = [
+    ("Sensor_Aceh_01", "Laut", 5.4, 10),      # Gempa Dangkal, Kekuatan Sedang
+    ("Sensor_Padang_02", "Darat", 6.5, 10),   # Gempa Darat (Bahaya Runtuhan, Bukan Tsunami)
+    ("Sensor_Mentawai_03", "Laut", 7.8, 15),  # BAHAYA: Laut, Dangkal, Kuat
+    ("Sensor_Bali_04", "Laut", 6.0, 50)       # Gempa Dalam
+]
+df_gempa = spark.createDataFrame(data_gempa, ["sensor_id", "lokasi_episentrum", "magnitudo", "kedalaman_km"])
+
+# 2. Logika Deteksi (Rule Engine)
+# Aturan Tsunami (Sederhana):
+# IF Lokasi = Laut AND Magnitudo >= 7.0 AND Kedalaman <= 20 km THEN "AWAS TSUNAMI"
+# ELSE IF Magnitudo >= 5.0 THEN "WASPADA GEMPA"
+# ELSE "NORMAL"
+
+df_alert = df_gempa.withColumn("status_peringatan", 
+    when(
+        (col("lokasi_episentrum") == "Laut") & 
+        (col("magnitudo") >= 7.0) & 
+        (col("kedalaman_km") <= 20), 
+        "AWAS TSUNAMI (EVAKUASI)"
+    )
+    .when(col("magnitudo") >= 5.0, "WASPADA GEMPA SUSULAN")
+    .otherwise("NORMAL")
+)
+
+df_alert.show(truncate=False)
+        </pre>
+
+        <h3>Bagian 4: Kesehatan Digital (Healthcare)</h3>
+        <h4>12.3. Monitoring Pasien ICU: Deteksi Anomali Personal</h4>
+        <p>Dalam kesehatan, "Normal" itu relatif. Detak jantung 60 BPM normal untuk atlet, tapi mungkin rendah untuk
+            bayi. Oleh karena itu, kita menggunakan <strong>Z-Score Personal</strong>: membandingkan data pasien saat
+            ini dengan rata-rata historis pasien itu sendiri, bukan rata-rata populasi umum.</p>
+
+        <pre>
+from pyspark.sql.functions import stddev, avg, abs as _abs
+
+print("\n--- [KESEHATAN: ICU MONITORING] ---")
+
+# 1. Data Time Series Vital Sign (Detak Jantung / BPM)
+# Pasien A: Stabil
+# Pasien B: Mengalami lonjakan tiba-tiba (Tachycardia)
+data_jantung = [
+    ("Pasien_A", "08:00", 70), ("Pasien_A", "08:05", 72), ("Pasien_A", "08:10", 71), ("Pasien_A", "08:15", 69),
+    ("Pasien_B", "08:00", 80), ("Pasien_B", "08:05", 82), ("Pasien_B", "08:10", 150), ("Pasien_B", "08:15", 145)
+]
+df_kesehatan = spark.createDataFrame(data_jantung, ["id_pasien", "waktu", "bpm"])
+
+# 2. Membangun Baseline Personal (Mean & StdDev per Pasien)
+stats_personal = df_kesehatan.groupBy("id_pasien").agg(
+    avg("bpm").alias("mean_bpm"), 
+    stddev("bpm").alias("std_bpm")
+)
+
+# 3. Analisis Anomali (Z-Score)
+# Formula: Z = (Nilai - Rata2) / StandarDeviasi
+# Z-Score > 2 menandakan penyimpangan signifikan (2 SD)
+df_analisa = df_kesehatan.join(stats_personal, "id_pasien")
+df_anomali = df_analisa.withColumn("z_score", 
+    (col("bpm") - col("mean_bpm")) / col("std_bpm")
+)
+
+print("Data Analisis Vital Sign:")
+df_anomali.select("id_pasien", "waktu", "bpm", "z_score").show()
+
+# 4. Sistem Alerting
+print("ALERT: Pasien Kondisi Kritis:")
+kritis = df_anomali.filter(_abs(col("z_score")) > 1.5).select("id_pasien", "waktu", "bpm")
+
+if kritis.count() > 0:
+    kritis.show()
+else:
+    print("Tidak ada anomali terdeteksi.")
+        </pre>
+
+        <div class="task-box">
+            <h4>Tugas Analisis dan Laporan Modul 12</h4>
+            <ol>
+                <li><strong>Pertanian:</strong> Dalam model regresi linear hasil panen, apa arti jika <em>intercept</em>
+                    bernilai negatif? Apakah model tersebut valid secara fisik untuk input nol (tanpa pupuk/hujan)?
+                    Bagaimana cara memperbaikinya?</li>
+                <li><strong>Kebencanaan:</strong> Mengapa sistem peringatan dini gempa lebih cocok menggunakan
+                    arsitektur <em>Stream Processing</em> (seperti Apache Flink/Spark Streaming) daripada Batch?
+                    Jelaskan dampak latensi 1 menit dalam konteks tsunami.</li>
+                <li><strong>Kesehatan:</strong> Jelaskan kelebihan pendekatan <em>Personalized Baseline</em>
+                    (membandingkan pasien dengan dirinya sendiri) dibandingkan <em>Population Baseline</em> (standar
+                    medis umum) dalam mendeteksi perburukan kondisi pasien kronis.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- PENUTUP -->
+    <div class="page">
+        <h2>Penutup Praktikum</h2>
+        <p>Selamat! Anda telah menyelesaikan rangkaian Modul Praktikum Terpadu Big Data Analytics & Engineering. Melalui
+            12 modul ini, Anda telah mensimulasikan peran sebagai:</p>
+        <ul>
+            <li><strong>Data Engineer:</strong> Membangun infrastruktur, pipeline ingestion, dan optimasi penyimpanan.
+            </li>
+            <li><strong>Data Analyst:</strong> Melakukan eksplorasi SQL, diagnostik masalah bisnis, dan visualisasi.
+            </li>
+            <li><strong>Data Scientist:</strong> Membangun model machine learning untuk prediksi dan segmentasi.</li>
+        </ul>
+        <p>Penguasaan materi ini menjadi fondasi yang kuat untuk berkarier di industri data modern yang terus
+            berkembang.</p>
+
+        <div style="margin-top: 50px; text-align: center; color: #718096; font-size: 10pt;">
+            &copy; 2025 Laboratorium Big Data & Komputasi Lanjut.<br>
+            Dokumen ini dilisensikan untuk penggunaan pendidikan internal.
+        </div>
+    </div>
+
+
+</body>
+
+</html>
